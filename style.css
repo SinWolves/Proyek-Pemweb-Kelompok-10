@@ -1,0 +1,37 @@
+body{
+    background-color: #fffafa;
+}
+
+nav{
+    position: sticky;
+    background-color: #1b1212;
+    color: #fffafa;
+}
+
+
+.carousel-item{
+    width:640px;
+    height:360px;
+    opacity: 0.6;
+}
+
+.music-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  
+  .music-item {
+    display: flex;
+    align-items: center;
+    background-color: #f7f7f7;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .music-item img {
+    width: 100px;
+    height: 100px;
+    margin-right: 10px
+}
