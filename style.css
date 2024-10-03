@@ -40,3 +40,9 @@ nav{
     height: 100px;
     margin-right: 10px
 }
+
+#albumsTitle{
+  margin-top: 25px;
+  margin-bottom: 50px;
+  margin-left: 15px;
+}
