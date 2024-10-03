@@ -8,6 +8,11 @@ nav{
     color: #fffafa;
 }
 
+#songsTitle{
+  margin-top: 25px;
+  margin-bottom: 50px;
+  margin-left: 15px;
+}
 
 .carousel-item{
     width:640px;
