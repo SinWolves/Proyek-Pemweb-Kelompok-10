@@ -46,3 +46,33 @@ nav{
   margin-bottom: 50px;
   margin-left: 15px;
 }
+
+#albumsCover {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.album {
+  width: 150px;
+  margin-bottom: 20px;
+}
+
+.album img {
+  width: 100%;
+  height: auto;
+}
+
+.album-info {
+  text-align: center;
+}
+
+.album-info h2 {
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.album-info p {
+  font-size: 12px;
+  color: #777;
+}
