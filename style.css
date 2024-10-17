@@ -34,6 +34,11 @@ nav{
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
+
+.music-item:hover{
+  background-color: #ccc;
+  cursor: pointer;
+}
   
 .music-item img {
   width: 100px;
@@ -63,6 +68,11 @@ nav{
 .album {
   width: 150px;
   margin-bottom: 20px;
+}
+
+.album:hover{
+  background-color: #ccc;
+  cursor: pointer;
 }
 
 .album img {
@@ -99,6 +109,11 @@ nav{
 .artist {
   width: 150px;
   margin-bottom: 20px;
+}
+
+.artist:hover{
+  background-color: #ccc;
+  cursor: pointer;
 }
 
 .artist img {
