@@ -1,51 +1,54 @@
-let songs1 = document.getElementById("songs1");
-let songs2 = document.getElementById("songs2");
-let songs3 = document.getElementById("songs3");
-let songs4 = document.getElementById("songs4");
-let songs5 = document.getElementById("songs5");
-let songs6 = document.getElementById("songs6");
-let songs7 = document.getElementById("songs7");
-let songs8 = document.getElementById("songs8");
-let songs9 = document.getElementById("songs9");
-let songs10 = document.getElementById("songs10");
-let songs11 = document.getElementById("songs11");
-let songs12 = document.getElementById("songs12");
-let albums1 = document.getElementById("albums1");
-let albums2 = document.getElementById("albums2");
-let albums3 = document.getElementById("albums3");
-let albums4 = document.getElementById("albums4");
-let albums5 = document.getElementById("albums5");
-let albums6 = document.getElementById("albums6");
-let artists1 = document.getElementById("artists1");
-let artists2 = document.getElementById("artists2");
-let artists3 = document.getElementById("artists3");
-let artists4 = document.getElementById("artists4");
-let artists5 = document.getElementById("artists5");
-let artists6 = document.getElementById("artists6");
-let songsPopup1 = document.getElementById("songsPopup1");
-let songsPopup2 = document.getElementById("songsPopup2");
-let songsPopup3 = document.getElementById("songsPopup3");
-let songsPopup4 = document.getElementById("songsPopup4");
-let songsPopup5 = document.getElementById("songsPopup5");
-let songsPopup6 = document.getElementById("songsPopup6");
-let songsPopup7 = document.getElementById("songsPopup7");
-let songsPopup8 = document.getElementById("songsPopup8");
-let songsPopup9 = document.getElementById("songsPopup9");
-let songsPopup10 = document.getElementById("songsPopup10");
-let songsPopup11 = document.getElementById("songsPopup11");
-let songsPopup12 = document.getElementById("songsPopup12");
-let albumsPopup1 = document.getElementById("albumsPopup1");
-let albumsPopup2 = document.getElementById("albumsPopup2");
-let albumsPopup3 = document.getElementById("albumsPopup3");
-let albumsPopup4 = document.getElementById("albumsPopup4");
-let albumsPopup5 = document.getElementById("albumsPopup5");
-let albumsPopup6 = document.getElementById("albumsPopup6");
-let artistsPopup1 = document.getElementById("artistsPopup1");
-let artistsPopup2 = document.getElementById("artistsPopup2");
-let artistsPopup3 = document.getElementById("artistsPopup3");
-let artistsPopup4 = document.getElementById("artistsPopup4");
-let artistsPopup5 = document.getElementById("artistsPopup5");
-let artistsPopup6 = document.getElementById("artistsPopup6");
+const songs1 = document.getElementById("songs1");
+const songs2 = document.getElementById("songs2");
+const songs3 = document.getElementById("songs3");
+const songs4 = document.getElementById("songs4");
+const songs5 = document.getElementById("songs5");
+const songs6 = document.getElementById("songs6");
+const songs7 = document.getElementById("songs7");
+const songs8 = document.getElementById("songs8");
+const songs9 = document.getElementById("songs9");
+const songs10 = document.getElementById("songs10");
+const songs11 = document.getElementById("songs11");
+const songs12 = document.getElementById("songs12");
+const albums1 = document.getElementById("albums1");
+const albums2 = document.getElementById("albums2");
+const albums3 = document.getElementById("albums3");
+const albums4 = document.getElementById("albums4");
+const albums5 = document.getElementById("albums5");
+const albums6 = document.getElementById("albums6");
+const artists1 = document.getElementById("artists1");
+const artists2 = document.getElementById("artists2");
+const artists3 = document.getElementById("artists3");
+const artists4 = document.getElementById("artists4");
+const artists5 = document.getElementById("artists5");
+const artists6 = document.getElementById("artists6");
+const songsPopup1 = document.getElementById("songsPopup1");
+const songsPopup2 = document.getElementById("songsPopup2");
+const songsPopup3 = document.getElementById("songsPopup3");
+const songsPopup4 = document.getElementById("songsPopup4");
+const songsPopup5 = document.getElementById("songsPopup5");
+const songsPopup6 = document.getElementById("songsPopup6");
+const songsPopup7 = document.getElementById("songsPopup7");
+const songsPopup8 = document.getElementById("songsPopup8");
+const songsPopup9 = document.getElementById("songsPopup9");
+const songsPopup10 = document.getElementById("songsPopup10");
+const songsPopup11 = document.getElementById("songsPopup11");
+const songsPopup12 = document.getElementById("songsPopup12");
+const albumsPopup1 = document.getElementById("albumsPopup1");
+const albumsPopup2 = document.getElementById("albumsPopup2");
+const albumsPopup3 = document.getElementById("albumsPopup3");
+const albumsPopup4 = document.getElementById("albumsPopup4");
+const albumsPopup5 = document.getElementById("albumsPopup5");
+const albumsPopup6 = document.getElementById("albumsPopup6");
+const artistsPopup1 = document.getElementById("artistsPopup1");
+const artistsPopup2 = document.getElementById("artistsPopup2");
+const artistsPopup3 = document.getElementById("artistsPopup3");
+const artistsPopup4 = document.getElementById("artistsPopup4");
+const artistsPopup5 = document.getElementById("artistsPopup5");
+const artistsPopup6 = document.getElementById("artistsPopup6");
+const stars = document.querySelectorAll('.star');
+let ratings = [];
+let currentRating = 0;
 
 songs1.addEventListener("click", () => {
 
@@ -55,6 +58,48 @@ songs1.addEventListener("click", () => {
         document.getElementById('songsPopup1').style.display = 'none';
     });
 
+    // Function to handle star hover and click
+    stars.forEach(star => {
+        star.addEventListener('mouseover', () => {
+            resetStars();
+            star.classList.add('selected');
+            star.previousElementSibling?.classList.add('selected'); // Highlight previous stars
+        });
+
+        star.addEventListener('mouseout', resetStars);
+
+        star.addEventListener('click', () => {
+            currentRating = parseInt(star.getAttribute('data-value'));
+            saveRating(currentRating);
+        });
+    });
+
+    // Function to reset stars
+    function resetStars() {
+        stars.forEach(star => {
+            star.classList.remove('selected');
+        });
+        if (currentRating > 0) {
+            for (let i = 0; i < currentRating; i++) {
+                stars[i].classList.add('selected');
+            }
+        }
+    }
+
+    // Function to save rating to the array
+    function saveRating(rating) {
+        ratings.push(rating);
+        console.log('Current Ratings:', ratings); // Display the current ratings
+    }
+
+    // Add event listener to the submit button
+    document.getElementById('submit').addEventListener('click', () => {
+        if (currentRating > 0) {
+            alert(`Rating of ${currentRating} saved!`);
+        } else {
+            alert('Please select a rating before submitting.');
+        }
+    });
 });
 
 songs2.addEventListener("click", () => {
@@ -63,6 +108,49 @@ songs2.addEventListener("click", () => {
 
     document.querySelector('.close2').addEventListener('click', () => {
         document.getElementById('songsPopup2').style.display = 'none';
+    });
+
+    // Function to handle star hover and click
+    stars.forEach(star => {
+        star.addEventListener('mouseover', () => {
+            resetStars();
+            star.classList.add('selected');
+            star.previousElementSibling?.classList.add('selected'); // Highlight previous stars
+        });
+
+        star.addEventListener('mouseout', resetStars);
+
+        star.addEventListener('click', () => {
+            currentRating = parseInt(star.getAttribute('data-value'));
+            saveRating(currentRating);
+        });
+    });
+
+    // Function to reset stars
+    function resetStars() {
+        stars.forEach(star => {
+            star.classList.remove('selected');
+        });
+        if (currentRating > 0) {
+            for (let i = 0; i < currentRating; i++) {
+                stars[i].classList.add('selected');
+            }
+        }
+    }
+
+    // Function to save rating to the array
+    function saveRating(rating) {
+        ratings.push(rating);
+        console.log('Current Ratings:', ratings); // Display the current ratings
+    }
+
+    // Add event listener to the submit button
+    document.getElementById('submit').addEventListener('click', () => {
+        if (currentRating > 0) {
+            alert(`Rating of ${currentRating} saved!`);
+        } else {
+            alert('Please select a rating before submitting.');
+        }
     });
 
 });
@@ -75,6 +163,49 @@ songs3.addEventListener("click", () => {
         document.getElementById('songsPopup3').style.display = 'none';
     });
 
+    // Function to handle star hover and click
+    stars.forEach(star => {
+        star.addEventListener('mouseover', () => {
+            resetStars();
+            star.classList.add('selected');
+            star.previousElementSibling?.classList.add('selected'); // Highlight previous stars
+        });
+
+        star.addEventListener('mouseout', resetStars);
+
+        star.addEventListener('click', () => {
+            currentRating = parseInt(star.getAttribute('data-value'));
+            saveRating(currentRating);
+        });
+    });
+
+    // Function to reset stars
+    function resetStars() {
+        stars.forEach(star => {
+            star.classList.remove('selected');
+        });
+        if (currentRating > 0) {
+            for (let i = 0; i < currentRating; i++) {
+                stars[i].classList.add('selected');
+            }
+        }
+    }
+
+    // Function to save rating to the array
+    function saveRating(rating) {
+        ratings.push(rating);
+        console.log('Current Ratings:', ratings); // Display the current ratings
+    }
+
+    // Add event listener to the submit button
+    document.getElementById('submit').addEventListener('click', () => {
+        if (currentRating > 0) {
+            alert(`Rating of ${currentRating} saved!`);
+        } else {
+            alert('Please select a rating before submitting.');
+        }
+    });
+
 });
 
 songs4.addEventListener("click", () => {
@@ -83,6 +214,49 @@ songs4.addEventListener("click", () => {
 
     document.querySelector('.close4').addEventListener('click', () => {
         document.getElementById('songsPopup4').style.display = 'none';
+    });
+
+    // Function to handle star hover and click
+    stars.forEach(star => {
+        star.addEventListener('mouseover', () => {
+            resetStars();
+            star.classList.add('selected');
+            star.previousElementSibling?.classList.add('selected'); // Highlight previous stars
+        });
+
+        star.addEventListener('mouseout', resetStars);
+
+        star.addEventListener('click', () => {
+            currentRating = parseInt(star.getAttribute('data-value'));
+            saveRating(currentRating);
+        });
+    });
+
+    // Function to reset stars
+    function resetStars() {
+        stars.forEach(star => {
+            star.classList.remove('selected');
+        });
+        if (currentRating > 0) {
+            for (let i = 0; i < currentRating; i++) {
+                stars[i].classList.add('selected');
+            }
+        }
+    }
+
+    // Function to save rating to the array
+    function saveRating(rating) {
+        ratings.push(rating);
+        console.log('Current Ratings:', ratings); // Display the current ratings
+    }
+
+    // Add event listener to the submit button
+    document.getElementById('submit').addEventListener('click', () => {
+        if (currentRating > 0) {
+            alert(`Rating of ${currentRating} saved!`);
+        } else {
+            alert('Please select a rating before submitting.');
+        }
     });
 
 });
