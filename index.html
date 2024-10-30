@@ -167,43 +167,43 @@
       <div class="album" id="albums1">
         <img src="Artists/Joji/Album/SMITHEREENS/cover.jpg" alt="SMITHEREENS Album Cover">
         <div class="album-info">
-          <h2>SMITHEREENS</h2>
-          <p>Album • Joji</p>
+          <h2 class="label">SMITHEREENS</h2>
+          <p class="record">Album • Joji</p>
         </div>
       </div>
       <div class="album" id="albums2">
         <img src="Artists/Frank Ocean/Album/channel ORANGE/-achannelorange.jpg" alt="channel ORANGE Album Cover">
         <div class="album-info">
-          <h2>channel ORANGE</h2>
-          <p>Album • Frank Ocean</p>
+          <h2 class="label">channel ORANGE</h2>
+          <p class="record">Album • Frank Ocean</p>
         </div>
       </div>
       <div class="album" id="albums3">
         <img src="Artists/Tyler, the Creator/Album/Wolf/cover.jpg" alt="Wolf Album Cover">
         <div class="album-info">
-          <h2>Wolf</h2>
-          <p>Album • Tyler, the Creator</p>
+          <h2 class="label">Wolf</h2>
+          <p class="record">Album • Tyler, the Creator</p>
         </div>
       </div>
       <div class="album" id="albums4">
         <img src="Artists/Bruno Mars/Album/24K Magic/bruno_mars_24k_magic-portada.jpg" alt="24K Magic Album Cover">
         <div class="album-info">
-          <h2>24K Magic</h2>
-          <p>Album • Bruno Mars</p>
+          <h2 class="label">24K Magic</h2>
+          <p class="record">Album • Bruno Mars</p>
         </div>
       </div>
       <div class="album" id="albums5">
         <img src="Artists/Travis Scott/Album/UTOPIA/196871341882.jpg" alt="UTOPIA Cover">
         <div class="album-info">
-          <h2>UTOPIA</h2>
-          <p>Album • Travis Scott</p>
+          <h2 class="label">UTOPIA</h2>
+          <p class="record">Album • Travis Scott</p>
         </div>
       </div>
       <div class="album" id="albums6">
         <img src="Artists/Tyler, the Creator/Album/IGOR/COVER.png" alt="IGOR Cover">
         <div class="album-info">
-          <h2>IGOR</h2>
-          <p>Album • Tyler, the Creator</p>
+          <h2 class="label">IGOR</h2>
+          <p class="record">Album • Tyler, the Creator</p>
         </div>
       </div>
     </div>
@@ -219,159 +219,66 @@
       <div class="artist" id="artists1">
         <img src="Artists/Eminem/Eminem_2021_Color_Corrected.jpg" alt="Eminem Photo">
         <div class="artist-info">
-          <h2>Eminem</h2>
+          <h2 class="name">Eminem</h2>
         </div>
       </div>
       <div class="artist" id="artists2">
         <img src="Artists/Frank Ocean/Frank_Ocean_2022_Blonded.jpg" alt="Frank Ocean Photo">
         <div class="artist-info">
-          <h2>Frank Ocean</h2>
+          <h2 class="name">Frank Ocean</h2>
         </div>
       </div>
       <div class="artist" id="artists3">
         <img src="Artists/Snoop Dogg/Snoop_Dogg_2023_(53775197331)_(cropped).jpg" alt="Snoop Dogg Photo">
         <div class="artist-info">
-          <h2>Snoop Dogg</h2>
+          <h2 class="name">Snoop Dogg</h2>
         </div>
       </div>
       <div class="artist" id="artists4">
         <img src="Artists/Bruno Mars/BrunoMars24KMagicWorldTourLive_(cropped).jpg" alt="Bruno Mars Photo">
         <div class="artist-info">
-          <h2>Bruno Mars</h2>
+          <h2 class="name">Bruno Mars</h2>
         </div>
       </div>
       <div class="artist" id="artists5">
         <img src="Artists/Billie Eilish/Billie_Eilish_Vogue_2023.jpg" alt="Billie Eilish Photo">
         <div class="artist-info">
-          <h2>Billie Eilish</h2>
+          <h2 class="name">Billie Eilish</h2>
         </div>
       </div>
       <div class="artist" id="artists6">
         <img src="Artists/Tyler, the Creator/images.jpeg" alt="Tyler, the Creator Photo">
         <div class="artist-info">
-          <h2>Tyler, the Creator</h2>
+          <h2 class="name">Tyler, the Creator</h2>
         </div>
       </div>
     </div>
 
     <!--Pop-up Songs Rating-->
 
-<!-- Popup container template -->
-<div id="songsPopup" style="display: none;">
-  <div id="popup-card">
-      <div class="left">
-          <img id="popup-cover" src="" alt="Album Cover">
-          <h2 id="popup-title"></h2>
-          <p id="popup-artist"></p>
-      </div>
-      <div class="right">
-          <span class="close">&times;</span>
-          <h1>Rate the Song</h1>
-          <div id="star-rating">
-              <span class="star" data-value="1">&#9733;</span>
-              <span class="star" data-value="2">&#9733;</span>
-              <span class="star" data-value="3">&#9733;</span>
-              <span class="star" data-value="4">&#9733;</span>
-              <span class="star" data-value="5">&#9733;</span>
+    <div id="songsPopup" style="display: none;">
+      <div id="popup-card">
+          <div class="left">
+              <img id="popup-cover" src="" alt="Album Cover">
+              <h2 id="popup-title"></h2>
+              <p id="popup-artist"></p>
           </div>
-          <button id="submit">Submit Rating</button>
-      </div>
-  </div>
-</div>
-
-<!-- Popup container template -->
-<div id="songsPopup" style="display: none;">
-  <div id="popup-card">
-      <div class="left">
-          <img id="popup-cover" src="" alt="Album Cover">
-          <h2 id="popup-title"></h2>
-          <p id="popup-artist"></p>
-      </div>
-      <div class="right">
-          <span class="close">&times;</span>
-          <h1>Rate the Song</h1>
-          <div id="star-rating">
-              <span class="star" data-value="1">&#9733;</span>
-              <span class="star" data-value="2">&#9733;</span>
-              <span class="star" data-value="3">&#9733;</span>
-              <span class="star" data-value="4">&#9733;</span>
-              <span class="star" data-value="5">&#9733;</span>
+          <div class="right">
+              <span class="close">&times;</span>
+              <h1>Rate the Song</h1>
+              <div id="song-star-rating">
+                  <span class="star" data-value="1">&#9733;</span>
+                  <span class="star" data-value="2">&#9733;</span>
+                  <span class="star" data-value="3">&#9733;</span>
+                  <span class="star" data-value="4">&#9733;</span>
+                  <span class="star" data-value="5">&#9733;</span>
+              </div>
+              <button id="song-submit">Submit Rating</button>
           </div>
-          <button id="submit">Submit Rating</button>
       </div>
-  </div>
-</div>
-
-<!-- Popup container template -->
-<div id="songsPopup" style="display: none;">
-  <div id="popup-card">
-      <div class="left">
-          <img id="popup-cover" src="" alt="Album Cover">
-          <h2 id="popup-title"></h2>
-          <p id="popup-artist"></p>
-      </div>
-      <div class="right">
-          <span class="close">&times;</span>
-          <h1>Rate the Song</h1>
-          <div id="star-rating">
-              <span class="star" data-value="1">&#9733;</span>
-              <span class="star" data-value="2">&#9733;</span>
-              <span class="star" data-value="3">&#9733;</span>
-              <span class="star" data-value="4">&#9733;</span>
-              <span class="star" data-value="5">&#9733;</span>
-          </div>
-          <button id="submit">Submit Rating</button>
-      </div>
-  </div>
-</div>
-
-<!-- Popup container template -->
-<div id="songsPopup" style="display: none;">
-  <div id="popup-card">
-      <div class="left">
-          <img id="popup-cover" src="" alt="Album Cover">
-          <h2 id="popup-title"></h2>
-          <p id="popup-artist"></p>
-      </div>
-      <div class="right">
-          <span class="close">&times;</span>
-          <h1>Rate the Song</h1>
-          <div id="star-rating">
-              <span class="star" data-value="1">&#9733;</span>
-              <span class="star" data-value="2">&#9733;</span>
-              <span class="star" data-value="3">&#9733;</span>
-              <span class="star" data-value="4">&#9733;</span>
-              <span class="star" data-value="5">&#9733;</span>
-          </div>
-          <button id="submit">Submit Rating</button>
-      </div>
-  </div>
-</div>
-
-<!-- Popup container template -->
-<div id="songsPopup" style="display: none;">
-  <div id="popup-card">
-      <div class="left">
-          <img id="popup-cover" src="" alt="Album Cover">
-          <h2 id="popup-title"></h2>
-          <p id="popup-artist"></p>
-      </div>
-      <div class="right">
-          <span class="close">&times;</span>
-          <h1>Rate the Song</h1>
-          <div id="star-rating">
-              <span class="star" data-value="1">&#9733;</span>
-              <span class="star" data-value="2">&#9733;</span>
-              <span class="star" data-value="3">&#9733;</span>
-              <span class="star" data-value="4">&#9733;</span>
-              <span class="star" data-value="5">&#9733;</span>
-          </div>
-          <button id="submit">Submit Rating</button>
-      </div>
-  </div>
-</div>
+    </div>
     
-<!-- Popup container template -->
+
 <div id="songsPopup" style="display: none;">
   <div id="popup-card">
       <div class="left">
@@ -382,19 +289,88 @@
       <div class="right">
           <span class="close">&times;</span>
           <h1>Rate the Song</h1>
-          <div id="star-rating">
+          <div id="song-star-rating">
               <span class="star" data-value="1">&#9733;</span>
               <span class="star" data-value="2">&#9733;</span>
               <span class="star" data-value="3">&#9733;</span>
               <span class="star" data-value="4">&#9733;</span>
               <span class="star" data-value="5">&#9733;</span>
           </div>
-          <button id="submit">Submit Rating</button>
+          <button id="song-submit">Submit Rating</button>
       </div>
   </div>
 </div>
+
+
+<div id="songsPopup" style="display: none;">
+  <div id="popup-card">
+      <div class="left">
+          <img id="popup-cover" src="" alt="Album Cover">
+          <h2 id="popup-title"></h2>
+          <p id="popup-artist"></p>
+      </div>
+      <div class="right">
+          <span class="close">&times;</span>
+          <h1>Rate the Song</h1>
+          <div id="song-star-rating">
+              <span class="star" data-value="1">&#9733;</span>
+              <span class="star" data-value="2">&#9733;</span>
+              <span class="star" data-value="3">&#9733;</span>
+              <span class="star" data-value="4">&#9733;</span>
+              <span class="star" data-value="5">&#9733;</span>
+          </div>
+          <button id="song-submit">Submit Rating</button>
+      </div>
+  </div>
+</div>
+
+
+<div id="songsPopup" style="display: none;">
+  <div id="popup-card">
+      <div class="left">
+          <img id="popup-cover" src="" alt="Album Cover">
+          <h2 id="popup-title"></h2>
+          <p id="popup-artist"></p>
+      </div>
+      <div class="right">
+          <span class="close">&times;</span>
+          <h1>Rate the Song</h1>
+          <div id="song-star-rating">
+              <span class="star" data-value="1">&#9733;</span>
+              <span class="star" data-value="2">&#9733;</span>
+              <span class="star" data-value="3">&#9733;</span>
+              <span class="star" data-value="4">&#9733;</span>
+              <span class="star" data-value="5">&#9733;</span>
+          </div>
+          <button id="song-submit">Submit Rating</button>
+      </div>
+  </div>
+</div>
+
+
+<div id="songsPopup" style="display: none;">
+  <div id="popup-card">
+      <div class="left">
+          <img id="popup-cover" src="" alt="Album Cover">
+          <h2 id="popup-title"></h2>
+          <p id="popup-artist"></p>
+      </div>
+      <div class="right">
+          <span class="close">&times;</span>
+          <h1>Rate the Song</h1>
+          <div id="song-star-rating">
+              <span class="star" data-value="1">&#9733;</span>
+              <span class="star" data-value="2">&#9733;</span>
+              <span class="star" data-value="3">&#9733;</span>
+              <span class="star" data-value="4">&#9733;</span>
+              <span class="star" data-value="5">&#9733;</span>
+          </div>
+          <button id="song-submit">Submit Rating</button>
+      </div>
+  </div>
+</div>
+
     
-<!-- Popup container template -->
 <div id="songsPopup" style="display: none;">
   <div id="popup-card">
       <div class="left">
@@ -405,19 +381,19 @@
       <div class="right">
           <span class="close">&times;</span>
           <h1>Rate the Song</h1>
-          <div id="star-rating">
+          <div id="song-star-rating">
               <span class="star" data-value="1">&#9733;</span>
               <span class="star" data-value="2">&#9733;</span>
               <span class="star" data-value="3">&#9733;</span>
               <span class="star" data-value="4">&#9733;</span>
               <span class="star" data-value="5">&#9733;</span>
           </div>
-          <button id="submit">Submit Rating</button>
+          <button id="song-submit">Submit Rating</button>
       </div>
   </div>
 </div>
+
     
-<!-- Popup container template -->
 <div id="songsPopup" style="display: none;">
   <div id="popup-card">
       <div class="left">
@@ -428,19 +404,19 @@
       <div class="right">
           <span class="close">&times;</span>
           <h1>Rate the Song</h1>
-          <div id="star-rating">
+          <div id="song-star-rating">
               <span class="star" data-value="1">&#9733;</span>
               <span class="star" data-value="2">&#9733;</span>
               <span class="star" data-value="3">&#9733;</span>
               <span class="star" data-value="4">&#9733;</span>
               <span class="star" data-value="5">&#9733;</span>
           </div>
-          <button id="submit">Submit Rating</button>
+          <button id="song-submit">Submit Rating</button>
       </div>
   </div>
 </div>
 
-<!-- Popup container template -->
+    
 <div id="songsPopup" style="display: none;">
   <div id="popup-card">
       <div class="left">
@@ -451,19 +427,19 @@
       <div class="right">
           <span class="close">&times;</span>
           <h1>Rate the Song</h1>
-          <div id="star-rating">
+          <div id="song-star-rating">
               <span class="star" data-value="1">&#9733;</span>
               <span class="star" data-value="2">&#9733;</span>
               <span class="star" data-value="3">&#9733;</span>
               <span class="star" data-value="4">&#9733;</span>
               <span class="star" data-value="5">&#9733;</span>
           </div>
-          <button id="submit">Submit Rating</button>
+          <button id="song-submit">Submit Rating</button>
       </div>
   </div>
 </div>
 
-<!-- Popup container template -->
+
 <div id="songsPopup" style="display: none;">
   <div id="popup-card">
       <div class="left">
@@ -474,19 +450,18 @@
       <div class="right">
           <span class="close">&times;</span>
           <h1>Rate the Song</h1>
-          <div id="star-rating">
+          <div id="song-star-rating">
               <span class="star" data-value="1">&#9733;</span>
               <span class="star" data-value="2">&#9733;</span>
               <span class="star" data-value="3">&#9733;</span>
               <span class="star" data-value="4">&#9733;</span>
               <span class="star" data-value="5">&#9733;</span>
           </div>
-          <button id="submit">Submit Rating</button>
+          <button id="song-submit">Submit Rating</button>
       </div>
   </div>
 </div>
 
-<!-- Popup container template -->
 <div id="songsPopup" style="display: none;">
   <div id="popup-card">
       <div class="left">
@@ -497,19 +472,19 @@
       <div class="right">
           <span class="close">&times;</span>
           <h1>Rate the Song</h1>
-          <div id="star-rating">
+          <div id="song-star-rating">
               <span class="star" data-value="1">&#9733;</span>
               <span class="star" data-value="2">&#9733;</span>
               <span class="star" data-value="3">&#9733;</span>
               <span class="star" data-value="4">&#9733;</span>
               <span class="star" data-value="5">&#9733;</span>
           </div>
-          <button id="submit">Submit Rating</button>
+          <button id="song-submit">Submit Rating</button>
       </div>
   </div>
 </div>
 
-<!-- Popup container template -->
+
 <div id="songsPopup" style="display: none;">
   <div id="popup-card">
       <div class="left">
@@ -520,14 +495,37 @@
       <div class="right">
           <span class="close">&times;</span>
           <h1>Rate the Song</h1>
-          <div id="star-rating">
+          <div id="song-star-rating">
               <span class="star" data-value="1">&#9733;</span>
               <span class="star" data-value="2">&#9733;</span>
               <span class="star" data-value="3">&#9733;</span>
               <span class="star" data-value="4">&#9733;</span>
               <span class="star" data-value="5">&#9733;</span>
           </div>
-          <button id="submit">Submit Rating</button>
+          <button id="song-submit">Submit Rating</button>
+      </div>
+  </div>
+</div>
+
+
+<div id="songsPopup" style="display: none;">
+  <div id="popup-card">
+      <div class="left">
+          <img id="popup-cover" src="" alt="Album Cover">
+          <h2 id="popup-title"></h2>
+          <p id="popup-artist"></p>
+      </div>
+      <div class="right">
+          <span class="close">&times;</span>
+          <h1>Rate the Song</h1>
+          <div id="song-star-rating">
+              <span class="star" data-value="1">&#9733;</span>
+              <span class="star" data-value="2">&#9733;</span>
+              <span class="star" data-value="3">&#9733;</span>
+              <span class="star" data-value="4">&#9733;</span>
+              <span class="star" data-value="5">&#9733;</span>
+          </div>
+          <button id="song-submit">Submit Rating</button>
       </div>
   </div>
 </div>
@@ -536,71 +534,144 @@
 
     <!--Pop-up Albums Rating-->
 
-    <!-- Popup container -->
-    <div id="albumsPopup1">
-      <!-- Popup card -->
+    <div id="albumsPopup" style="display: none;">
       <div id="popup-card">
-        <!-- Your popup content here -->
-        <span class="close13">&times;</span>
-        <h2>Popup Title</h2>
-        <p>This is a popup card.</p>
+          <div class="left">
+              <img id="popup-overlay" src="" alt="Album Cover">
+              <h2 id="popup-label"></h2>
+              <p id="popup-record"></p>
+          </div>
+          <div class="right">
+              <span class="close2">&times;</span>
+              <h1>Rate the Album</h1>
+              <div id="album-star-rating">
+                  <span class="star" data-value="1">&#9733;</span>
+                  <span class="star" data-value="2">&#9733;</span>
+                  <span class="star" data-value="3">&#9733;</span>
+                  <span class="star" data-value="4">&#9733;</span>
+                  <span class="star" data-value="5">&#9733;</span>
+              </div>
+              <button id="album-submit">Submit Rating</button>
+          </div>
       </div>
     </div>
+    
 
-    <!-- Popup container -->
-    <div id="albumsPopup2">
-      <!-- Popup card -->
+    <div id="albumsPopup" style="display: none;">
       <div id="popup-card">
-        <!-- Your popup content here -->
-        <span class="close14">&times;</span>
-        <h2>Popup Title</h2>
-        <p>This is a popup card.</p>
+          <div class="left">
+              <img id="popup-overlay" src="" alt="Album Cover">
+              <h2 id="popup-label"></h2>
+              <p id="popup-record"></p>
+          </div>
+          <div class="right">
+              <span class="close2">&times;</span>
+              <h1>Rate the Album</h1>
+              <div id="album-star-rating">
+                  <span class="star" data-value="1">&#9733;</span>
+                  <span class="star" data-value="2">&#9733;</span>
+                  <span class="star" data-value="3">&#9733;</span>
+                  <span class="star" data-value="4">&#9733;</span>
+                  <span class="star" data-value="5">&#9733;</span>
+              </div>
+              <button id="album-submit">Submit Rating</button>
+          </div>
       </div>
     </div>
+    
 
-    <!-- Popup container -->
-    <div id="albumsPopup3">
-      <!-- Popup card -->
-      <div id="popup-card">
-        <!-- Your popup content here -->
-        <span class="close15">&times;</span>
-        <h2>Popup Title</h2>
-        <p>This is a popup card.</p>
-      </div>
-    </div>
 
-    <!-- Popup container -->
-    <div id="albumsPopup4">
-      <!-- Popup card -->
+    <div id="albumsPopup" style="display: none;">
       <div id="popup-card">
-        <!-- Your popup content here -->
-        <span class="close16">&times;</span>
-        <h2>Popup Title</h2>
-        <p>This is a popup card.</p>
+          <div class="left">
+              <img id="popup-overlay" src="" alt="Album Cover">
+              <h2 id="popup-label"></h2>
+              <p id="popup-record"></p>
+          </div>
+          <div class="right">
+              <span class="close2">&times;</span>
+              <h1>Rate the Album</h1>
+              <div id="album-star-rating">
+                  <span class="star" data-value="1">&#9733;</span>
+                  <span class="star" data-value="2">&#9733;</span>
+                  <span class="star" data-value="3">&#9733;</span>
+                  <span class="star" data-value="4">&#9733;</span>
+                  <span class="star" data-value="5">&#9733;</span>
+              </div>
+              <button id="album-submit">Submit Rating</button>
+          </div>
       </div>
     </div>
+    
 
-    <!-- Popup container -->
-    <div id="albumsPopup5">
-      <!-- Popup card -->
+    <div id="albumsPopup" style="display: none;">
       <div id="popup-card">
-        <!-- Your popup content here -->
-        <span class="close17">&times;</span>
-        <h2>Popup Title</h2>
-        <p>This is a popup card.</p>
+          <div class="left">
+              <img id="popup-overlay" src="" alt="Album Cover">
+              <h2 id="popup-label"></h2>
+              <p id="popup-record"></p>
+          </div>
+          <div class="right">
+              <span class="close2">&times;</span>
+              <h1>Rate the Album</h1>
+              <div id="album-star-rating">
+                  <span class="star" data-value="1">&#9733;</span>
+                  <span class="star" data-value="2">&#9733;</span>
+                  <span class="star" data-value="3">&#9733;</span>
+                  <span class="star" data-value="4">&#9733;</span>
+                  <span class="star" data-value="5">&#9733;</span>
+              </div>
+              <button id="album-submit">Submit Rating</button>
+          </div>
       </div>
     </div>
+    
 
-    <!-- Popup container -->
-    <div id="albumsPopup6">
-      <!-- Popup card -->
+    <div id="albumsPopup" style="display: none;">
       <div id="popup-card">
-        <!-- Your popup content here -->
-        <span class="close18">&times;</span>
-        <h2>Popup Title</h2>
-        <p>This is a popup card.</p>
+          <div class="left">
+              <img id="popup-overlay" src="" alt="Album Cover">
+              <h2 id="popup-label"></h2>
+              <p id="popup-record"></p>
+          </div>
+          <div class="right">
+              <span class="close2">&times;</span>
+              <h1>Rate the Album</h1>
+              <div id="album-star-rating">
+                  <span class="star" data-value="1">&#9733;</span>
+                  <span class="star" data-value="2">&#9733;</span>
+                  <span class="star" data-value="3">&#9733;</span>
+                  <span class="star" data-value="4">&#9733;</span>
+                  <span class="star" data-value="5">&#9733;</span>
+              </div>
+              <button id="album-submit">Submit Rating</button>
+          </div>
       </div>
     </div>
+    
+
+    <div id="albumsPopup" style="display: none;">
+      <div id="popup-card">
+          <div class="left">
+              <img id="popup-overlay" src="" alt="Album Cover">
+              <h2 id="popup-label"></h2>
+              <p id="popup-record"></p>
+          </div>
+          <div class="right">
+              <span class="close2">&times;</span>
+              <h1>Rate the Album</h1>
+              <div id="album-star-rating">
+                  <span class="star" data-value="1">&#9733;</span>
+                  <span class="star" data-value="2">&#9733;</span>
+                  <span class="star" data-value="3">&#9733;</span>
+                  <span class="star" data-value="4">&#9733;</span>
+                  <span class="star" data-value="5">&#9733;</span>
+              </div>
+              <button id="album-submit">Submit Rating</button>
+          </div>
+      </div>
+    </div>
+    
 
     <!-- Pop-Up Artists Rating-->
 

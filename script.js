@@ -1,33 +1,31 @@
 const songsItems = document.querySelectorAll('.music-item');
-const albums1 = document.getElementById("albums1");
-const albums2 = document.getElementById("albums2");
-const albums3 = document.getElementById("albums3");
-const albums4 = document.getElementById("albums4");
-const albums5 = document.getElementById("albums5");
-const albums6 = document.getElementById("albums6");
+const songStarRating = document.getElementById('song-star-rating');
+const songSubmitButton = document.getElementById('song-submit');
+const albumStarRating = document.getElementById('album-star-rating');
+const albumSubmitButton = document.getElementById('album-submit');
+const albums = document.querySelectorAll('.album');
+const popup = document.getElementById('albumsPopup');
+const popupOverlay = document.getElementById('popup-overlay');
+const popupLabel = document.getElementById('popup-label');
+const popupRecord = document.getElementById('popup-record');
+const closeButton = document.querySelector('.close2');
+const starRating = document.getElementById('star-rating');
+const submitButton = document.getElementById('submit');
+const stars = document.querySelectorAll('.star');
 const artists1 = document.getElementById("artists1");
 const artists2 = document.getElementById("artists2");
 const artists3 = document.getElementById("artists3");
 const artists4 = document.getElementById("artists4");
 const artists5 = document.getElementById("artists5");
 const artists6 = document.getElementById("artists6");
-const albumsPopup1 = document.getElementById("albumsPopup1");
-const albumsPopup2 = document.getElementById("albumsPopup2");
-const albumsPopup3 = document.getElementById("albumsPopup3");
-const albumsPopup4 = document.getElementById("albumsPopup4");
-const albumsPopup5 = document.getElementById("albumsPopup5");
-const albumsPopup6 = document.getElementById("albumsPopup6");
 const artistsPopup1 = document.getElementById("artistsPopup1");
 const artistsPopup2 = document.getElementById("artistsPopup2");
 const artistsPopup3 = document.getElementById("artistsPopup3");
 const artistsPopup4 = document.getElementById("artistsPopup4");
 const artistsPopup5 = document.getElementById("artistsPopup5");
 const artistsPopup6 = document.getElementById("artistsPopup6");
-const stars = document.querySelectorAll('.star');
-const songsRatings = []; // Array to store ratings
-let albumsRatings = [];
+const songsRatings = [];
 let artistsRatings = [];
-let currentRating = 0;
 
 songsItems.forEach(item => {
     item.addEventListener("click", () => {
@@ -44,7 +42,7 @@ songsItems.forEach(item => {
         document.getElementById('songsPopup').style.display = 'block';
 
         let currentRating = 0;
-        const stars = document.querySelectorAll('#star-rating .star');
+        const stars = document.querySelectorAll('#song-star-rating .star'); // Updated ID
 
         const closePopup = document.querySelector('.close');
         closePopup.onclick = () => {
@@ -79,7 +77,7 @@ songsItems.forEach(item => {
             console.log('Current Ratings:', songsRatings);
         }
 
-        document.getElementById('submit').onclick = () => {
+        document.getElementById('song-submit').onclick = () => { // Updated ID
             if (currentRating > 0) {
                 alert(`Rating of ${currentRating} saved for ${title}!`);
             } else {
@@ -90,65 +88,81 @@ songsItems.forEach(item => {
 });
 
 
-albums1.addEventListener("click", () => {
+// Initialize an array to hold album ratings
+let albumsRatings = new Array(albums.length).fill(null);
 
-    albumsPopup1.style.display = 'block';  
+// Open the popup when an album is clicked
+albums.forEach((album, index) => {
+    album.addEventListener('click', (event) => {
+        const img = album.querySelector('img').src;
+        const label = album.querySelector('.label').textContent;
+        const record = album.querySelector('.record').textContent;
 
-    document.querySelector('.close13').addEventListener('click', () => {
-        document.getElementById('albumsPopup1').style.display = 'none';
+        popupOverlay.src = img;
+        popupLabel.textContent = label;
+        popupRecord.textContent = record;
+
+        popup.style.display = 'block';
+        resetStarRating();
+        albumStarRating.setAttribute('data-album-index', index);
     });
-
 });
 
-albums2.addEventListener("click", () => {
-
-    albumsPopup2.style.display = 'block';  
-
-    document.querySelector('.close14').addEventListener('click', () => {
-        document.getElementById('albumsPopup2').style.display = 'none';
-    });
-
+// Close the popup
+closeButton.addEventListener('click', () => {
+    popup.style.display = 'none';
 });
 
-albums3.addEventListener("click", () => {
+// Handle star rating click
+albumStarRating.addEventListener('click', (e) => {
+    if (e.target.classList.contains('star')) {
+        const ratingValue = e.target.getAttribute('data-value');
+        const stars = albumStarRating.querySelectorAll('.star');
 
-    albumsPopup3.style.display = 'block';  
+        stars.forEach(star => {
+            star.classList.remove('selected');
+            if (star.getAttribute('data-value') <= ratingValue) {
+                star.classList.add('selected');
+            }
+        });
 
-    document.querySelector('.close15').addEventListener('click', () => {
-        document.getElementById('albumsPopup3').style.display = 'none';
-    });
-
+        albumStarRating.setAttribute('data-rating', ratingValue);
+    }
 });
 
-albums4.addEventListener("click", () => {
+// Submit the album rating
+albumSubmitButton.addEventListener('click', () => {
+    const albumIndex = albumStarRating.getAttribute('data-album-index');
+    const rating = albumStarRating.getAttribute('data-rating');
+    const albumName = popupLabel.textContent; // Get album name
 
-    albumsPopup4.style.display = 'block';  
+    if (rating) {
+        albumsRatings[albumIndex] = rating;
+        console.log('Album Ratings:', albumsRatings);
+        alert(`You gave ${rating} stars for '${albumName}'!`); // Alert with user's rating
+    }
 
-    document.querySelector('.close16').addEventListener('click', () => {
-        document.getElementById('albumsPopup4').style.display = 'none';
-    });
-
+    popup.style.display = 'none';
 });
 
-albums5.addEventListener("click", () => {
-
-    albumsPopup5.style.display = 'block';  
-
-    document.querySelector('.close17').addEventListener('click', () => {
-        document.getElementById('albumsPopup5').style.display = 'none';
+// Function to reset star ratings
+function resetStarRating() {
+    const stars = albumStarRating.querySelectorAll('.star');
+    stars.forEach(star => {
+        star.classList.remove('selected');
     });
+    albumStarRating.removeAttribute('data-rating');
+}
 
+// Prevent event propagation when clicking on the star rating or submit button
+albumStarRating.addEventListener('click', (e) => {
+    e.stopPropagation();
 });
 
-albums6.addEventListener("click", () => {
-
-    albumsPopup6.style.display = 'block';  
-
-    document.querySelector('.close18').addEventListener('click', () => {
-        document.getElementById('albumsPopup6').style.display = 'none';
-    });
-
+albumSubmitButton.addEventListener('click', (e) => {
+    e.stopPropagation();
 });
+
 
 artists1.addEventListener("click", () => {
 
