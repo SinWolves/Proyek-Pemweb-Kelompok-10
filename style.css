@@ -170,7 +170,7 @@ body{
 }
 
 
-#artistsPopup1 {
+#artistsPopup {
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   display: none;
@@ -185,80 +185,6 @@ body{
   background-color: rgba(0,0,0,0.4);
 }
 
-#artistsPopup2 {
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  display: none;
-  position: fixed;
-  z-index: 1;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgb(0,0,0);
-  background-color: rgba(0,0,0,0.4);
-}
-
-#artistsPopup3 {
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  display: none;
-  position: fixed;
-  z-index: 1;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgb(0,0,0);
-  background-color: rgba(0,0,0,0.4);
-}
-
-#artistsPopup4 {
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  display: none;
-  position: fixed;
-  z-index: 1;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgb(0,0,0);
-  background-color: rgba(0,0,0,0.4);
-}
-
-#artistsPopup5 {
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  display: none;
-  position: fixed;
-  z-index: 1;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgb(0,0,0);
-  background-color: rgba(0,0,0,0.4);
-}
-
-#artistsPopup6 {
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  display: none;
-  position: fixed;
-  z-index: 1;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgb(0,0,0);
-  background-color: rgba(0,0,0,0.4);
-}
 /* Style the popup card */
 #popup-card {
   display: flex;
@@ -326,85 +252,15 @@ body{
   cursor: pointer;
 }
 
-.close19 {
+.close3 {
   color: #aaa;
   float: right;
   font-size: 28px;
   font-weight: bold;
 }
 
-.close19:hover,
-.close19:focus {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.close20 {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.close20:hover,
-.close20:focus {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.close21 {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.close21:hover,
-.close21:focus {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.close22 {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.close22:hover,
-.close22:focus {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.close23 {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.close23:hover,
-.close23:focus {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.close24 {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.close24:hover,
-.close24:focus {
+.close3:hover,
+.close3:focus {
   color: black;
   text-decoration: none;
   cursor: pointer;

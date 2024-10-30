@@ -12,20 +12,16 @@ const closeButton = document.querySelector('.close2');
 const starRating = document.getElementById('star-rating');
 const submitButton = document.getElementById('submit');
 const stars = document.querySelectorAll('.star');
-const artists1 = document.getElementById("artists1");
-const artists2 = document.getElementById("artists2");
-const artists3 = document.getElementById("artists3");
-const artists4 = document.getElementById("artists4");
-const artists5 = document.getElementById("artists5");
-const artists6 = document.getElementById("artists6");
-const artistsPopup1 = document.getElementById("artistsPopup1");
-const artistsPopup2 = document.getElementById("artistsPopup2");
-const artistsPopup3 = document.getElementById("artistsPopup3");
-const artistsPopup4 = document.getElementById("artistsPopup4");
-const artistsPopup5 = document.getElementById("artistsPopup5");
-const artistsPopup6 = document.getElementById("artistsPopup6");
+const artists = document.querySelectorAll('.artist');
+const artistStarRating = document.getElementById('artist-star-rating');
+const artistSubmitButton = document.getElementById('artist-submit');
+const artistsPopup = document.getElementById('artistsPopup');
+const popupPhoto = document.getElementById('popup-photo');
+const popupName = document.getElementById('popup-name');
+const closedButton = document.querySelector('.close3');
 const songsRatings = [];
-let artistsRatings = [];
+const albumsRatings = [];
+const artistsRatings = [];
 
 songsItems.forEach(item => {
     item.addEventListener("click", () => {
@@ -79,17 +75,14 @@ songsItems.forEach(item => {
 
         document.getElementById('song-submit').onclick = () => { // Updated ID
             if (currentRating > 0) {
-                alert(`Rating of ${currentRating} saved for ${title}!`);
+                alert(`You gave ${currentRating} stars for '${title}'!`);
             } else {
                 alert('Please select a rating before submitting.');
             }
         };
     });
 });
-
-
-// Initialize an array to hold album ratings
-let albumsRatings = new Array(albums.length).fill(null);
+//***************************************************************************************************************************************************************************************** */
 
 // Open the popup when an album is clicked
 albums.forEach((album, index) => {
@@ -163,61 +156,74 @@ albumSubmitButton.addEventListener('click', (e) => {
     e.stopPropagation();
 });
 
+//************************************************************************************************************************************************************************** */
 
-artists1.addEventListener("click", () => {
 
-    artistsPopup1.style.display = 'block';  
+artists.forEach((artist, index) => {
+    artist.addEventListener('click', (event) => {
+        const img = artist.querySelector('img').src;
+        const name = artist.querySelector('.name').textContent;
 
-    document.querySelector('.close19').addEventListener('click', () => {
-        document.getElementById('artistsPopup1').style.display = 'none';
-    });
+        popupPhoto.src = img;
+        popupName.textContent = name;
 
-});
-
-artists2.addEventListener("click", () => {
-
-    artistsPopup2.style.display = 'block';  
-
-    document.querySelector('.close20').addEventListener('click', () => {
-        document.getElementById('artistsPopup2').style.display = 'none';
-    });
-
-});
-
-artists3.addEventListener("click", () => {
-
-    artistsPopup3.style.display = 'block';  
-
-    document.querySelector('.close21').addEventListener('click', () => {
-        document.getElementById('artistsPopup3').style.display = 'none';
-    });
-
-});
-
-artists4.addEventListener("click", () => {
-
-    artistsPopup4.style.display = 'block';  
-
-    document.querySelector('.close22').addEventListener('click', () => {
-        document.getElementById('artistsPopup4').style.display = 'none';
+        artistsPopup.style.display = 'block';
+        resetStarRating();
+        artistStarRating.setAttribute('data-artist-index', index);
     });
 });
 
-artists5.addEventListener("click", () => {
-
-    artistsPopup5.style.display = 'block';  
-
-    document.querySelector('.close23').addEventListener('click', () => {
-        document.getElementById('artistsPopup5').style.display = 'none';
-    });
+// Close the popup
+closedButton.addEventListener('click', () => {
+    artistsPopup.style.display = 'none';
 });
 
-artists6.addEventListener("click", () => {
+// Handle star rating click
+artistStarRating.addEventListener('click', (e) => {
+    if (e.target.classList.contains('star')) {
+        const ratingValue = e.target.getAttribute('data-value');
+        const stars = artistStarRating.querySelectorAll('.star');
 
-    artistsPopup6.style.display = 'block';  
+        stars.forEach(star => {
+            star.classList.remove('selected');
+            if (star.getAttribute('data-value') <= ratingValue) {
+                star.classList.add('selected');
+            }
+        });
 
-    document.querySelector('.close24').addEventListener('click', () => {
-        document.getElementById('artistsPopup6').style.display = 'none';
+        artistStarRating.setAttribute('data-rating', ratingValue);
+    }
+});
+
+// Submit the artist rating
+artistSubmitButton.addEventListener('click', () => {
+    const artistIndex = artistStarRating.getAttribute('data-artist-index');
+    const rating = artistStarRating.getAttribute('data-rating');
+    const artistName = popupName.textContent; // Get artist name
+
+    if (rating) {
+        artistsRatings[artistIndex] = rating;
+        console.log('Artist Ratings:', artistsRatings);
+        alert(`You gave ${rating} stars for '${artistName}'!`); // Alert with user's rating
+    }
+
+    artistsPopup.style.display = 'none';
+});
+
+// Function to reset star ratings
+function resetStarRating() {
+    const stars = artistStarRating.querySelectorAll('.star');
+    stars.forEach(star => {
+        star.classList.remove('selected');
     });
+    artistStarRating.removeAttribute('data-rating');
+}
 
+// Prevent event propagation when clicking on the star rating or submit button
+artistStarRating.addEventListener('click', (e) => {
+    e.stopPropagation();
+});
+
+artistSubmitButton.addEventListener('click', (e) => {
+    e.stopPropagation();
 });
