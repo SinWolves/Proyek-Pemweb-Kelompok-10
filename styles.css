@@ -1,33 +1,80 @@
-body {
-    background-color: #fef1e4;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start; /* Align items to the top */
-    align-items: center;
-    height: 100vh; /* Full viewport height */
-    margin: 0; /* Remove default margin */
-    color: white; /* Change text color to white for better contrast */
-    padding-top: 20px; /* Add some padding to move content down a bit */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
-h1{
-    color: #4a4a4a;
+body {
+    font-family: Arial, sans-serif;
+}
+
+.hero {
+    position: relative;
+    background-image: url('gabriel-gurrola-2UuhMZEChdc-unsplash.jpg'); /* Replace with your image path */
+    background-size: cover;
+    background-position: center;
+    color: white;
+    text-align: center;
+    padding: 100px 20px; /* Adjust padding as needed */
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* Dark overlay */
+    z-index: 1; /* Ensure it sits above the background but below the text */
+}
+
+.display-1, .display-4, .button-container {
+    position: relative; /* Bring text above the overlay */
+    z-index: 2;
 }
 
 .button-container {
-    margin-top: 20px; /* Spacing between text and buttons */
+    margin-top: 20px;
 }
 
 .button {
     padding: 10px 20px;
-    margin: 5px;
+    border: none;
     text-decoration: none;
-    color: white;
-    background-color: #3a6b7d; /* Button color */
-    border-radius: 5px;
-    transition: background-color 0.3s;
+    border-radius: 25px; /* Increased for rounder appearance */
+    margin: 0 10px;
+    font-size: 16px;
 }
 
-.button:hover {
-    background-color: #2a4b5d; /* Darker shade on hover */
+.button.login {
+    background-color: #39838a; /* Login button color */
+    color: white; /* Adjust text color for better contrast */
+}
+
+.button.login:hover {
+    background-color: #2b5b5c; /* Change color on hover for Login button */
+}
+
+.button.signup {
+    background-color: #dc661e; /* Sign Up button color */
+    color: white; /* Adjust text color for better contrast */
+}
+
+.button.signup:hover {
+    background-color: #b85514; /* Change color on hover for Sign Up button */
+}
+
+
+.content {
+    background-color: #fef1e4;
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.footer {
+    background-color: #0e1111;
+    color: white;
+    padding: 20px;
+    text-align: center;
 }
