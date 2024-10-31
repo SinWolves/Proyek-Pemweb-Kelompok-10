@@ -10,6 +10,10 @@ body {
     padding-top: 20px; /* Add some padding to move content down a bit */
 }
 
+h1{
+    color: #4a4a4a;
+}
+
 .button-container {
     margin-top: 20px; /* Spacing between text and buttons */
 }

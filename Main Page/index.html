@@ -8,17 +8,30 @@
 
     <!-- Bootstrap CSS -->
      <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   </head>
   <body>
 
     <!--Navbar-->
 
-    <nav class="navbar bg-body-tertiary">
-      <div class="container-fluid justify-content-center">
-        <span class="navbar-brand mb-0 h1 ">Music Judger</span>
+    <nav class="navbar">
+      <div class="menu-icon" id="menu-icon">
+          <i class="fas fa-bars"></i>
       </div>
-    </nav>
+      <div class="navbar-title">Music Judger</div>
+      <div class="spacer"></div>
+  </nav>
+  <div class="overlay" id="overlay"></div>
+  <div class="sidebar" id="sidebar">
+      <div class="close-icon" id="close-icon">
+          <i class="fas fa-times"></i>
+      </div>
+      <ul class="nav-links">
+          <li><a href="#home">Profile</a></li>
+          <li><a href="#about">Library</a></li>
+      </ul>
+  </div>
 
     <!--Carousel-->
 

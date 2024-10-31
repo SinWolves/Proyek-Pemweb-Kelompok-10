@@ -23,6 +23,32 @@ const songsRatings = [];
 const albumsRatings = [];
 const artistsRatings = [];
 
+document.getElementById('menu-icon').addEventListener('click', function() {
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('overlay');
+    sidebar.classList.toggle('show'); // Toggle the 'show' class
+    overlay.classList.toggle('show-overlay'); // Toggle overlay
+});
+
+document.getElementById('close-icon').addEventListener('click', function() {
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('overlay');
+    sidebar.classList.remove('show'); // Remove the 'show' class
+    overlay.classList.remove('show-overlay'); // Hide overlay
+});
+
+// Close sidebar when clicking outside
+document.addEventListener('click', function(event) {
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('overlay');
+    const menuIcon = document.getElementById('menu-icon');
+    if (sidebar.classList.contains('show') && !sidebar.contains(event.target) && !menuIcon.contains(event.target)) {
+        sidebar.classList.remove('show');
+        overlay.classList.remove('show-overlay'); // Hide overlay
+    }
+});
+
+
 songsItems.forEach(item => {
     item.addEventListener("click", () => {
         const title = item.querySelector('.title').textContent;
