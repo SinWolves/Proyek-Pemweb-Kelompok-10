@@ -14,8 +14,13 @@ body {
     background-size: cover;
     background-position: center;
     color: white;
-    text-align: center;
-    padding: 100px 20px; /* Adjust padding as needed */
+    text-align: left; /* Align text to the left */
+    padding: 200px 20px; /* Adjust padding as needed */
+    display: flex; /* Use Flexbox to lay out the content */
+    flex-direction: column; /* Stack elements vertically */
+    justify-content: center; /* Center content vertically */
+    align-items: flex-start; /* Align content to the left */
+    padding-left: 100px; /* Add 100px space on the left side of the hero */
 }
 
 .hero::before {
@@ -29,22 +34,39 @@ body {
     z-index: 1; /* Ensure it sits above the background but below the text */
 }
 
-.display-1, .display-4, .button-container {
+.display-1, .display-4 {
     position: relative; /* Bring text above the overlay */
     z-index: 2;
+    margin-left: 100px; /* Add 100px space to the left of the text */
 }
 
+.display-1 {
+    font-size: 3em; /* Adjust font size as necessary */
+    margin: 0; /* Remove default margin */
+}
+
+.display-4 {
+    font-size: 1.5em; /* Adjust font size as necessary */
+    margin: 10px 0; /* Add margin for spacing between title and subtitle */
+}
+
+/* Button container adjusted */
 .button-container {
-    margin-top: 20px;
+    position: relative;
+    z-index: 2;
+    margin-top: 20px; /* Add space between text and buttons */
+    display: flex; /* Use Flexbox to arrange buttons horizontally */
+    gap: 15px; /* Space between buttons */
 }
 
+/* Button Styles */
 .button {
     padding: 10px 20px;
     border: none;
     text-decoration: none;
-    border-radius: 25px; /* Increased for rounder appearance */
-    margin: 0 10px;
+    border-radius: 25px; /* Rounded appearance */
     font-size: 16px;
+    display: inline-block; /* Ensure the buttons stay in line */
 }
 
 .button.login {
@@ -65,9 +87,9 @@ body {
     background-color: #b85514; /* Change color on hover for Sign Up button */
 }
 
-
 .content {
-    background-color: #fef1e4;
+    background-color: #121212;
+    color: #fefefe;
     padding: 50px 20px;
     text-align: center;
 }
