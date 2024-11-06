@@ -6,6 +6,7 @@
 
 body {
     font-family: Arial, sans-serif;
+    background-color: #121212;
 }
 
 .hero {
@@ -87,11 +88,322 @@ body {
     background-color: #b85514; /* Change color on hover for Sign Up button */
 }
 
+/* Main Content Section */
 .content {
     background-color: #121212;
     color: #fefefe;
     padding: 50px 20px;
+    display: flex;
+    justify-content: space-between;
     text-align: center;
+    flex-wrap: wrap; /* Allow content to wrap on smaller screens */
+}
+
+.left {
+    flex: 1;
+    padding: 70px;
+}
+
+.left h2 {
+    margin-bottom: 20px;
+}
+
+.left p {
+    padding-left: 75px;
+    margin-top: 10px;
+    text-align: left;   /* Ensures the paragraph is left-aligned */
+    text-indent: 0;     /* Removes any indentation */
+    line-height: 1.6;   /* Optional: Adjusts line spacing for better readability */
+    font-size: larger;
+}
+
+.right {
+    flex: 1;
+    padding: 20px;
+    position: relative;
+}
+
+.slider {
+    position: relative;
+    width: 100%;
+    height: 300px; /* Adjust height as needed */
+    overflow: hidden;
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Ensures the whole image is visible */
+    opacity: 0;  /* Initially hide all images */
+    transition: opacity 2s ease-in-out; /* Smooth fade transition */
+}
+
+/* Fade animation for each slide with a staggered delay */
+.slide:nth-child(1) {
+    animation: fade 35s infinite;
+}
+
+.slide:nth-child(2) {
+    animation: fade 35s infinite;
+    animation-delay: 5s;
+}
+
+.slide:nth-child(3) {
+    animation: fade 35s infinite;
+    animation-delay: 10s;
+}
+
+.slide:nth-child(4) {
+    animation: fade 35s infinite;
+    animation-delay: 15s;
+}
+
+.slide:nth-child(5) {
+    animation: fade 35s infinite;
+    animation-delay: 20s;
+}
+
+.slide:nth-child(6) {
+    animation: fade 35s infinite;
+    animation-delay: 25s;
+}
+
+.slide:nth-child(7) {
+    animation: fade 35s infinite;
+    animation-delay: 30s;
+}
+
+/* Keyframe for fading effect */
+@keyframes fade {
+    0%, 100% {
+        opacity: 0;
+    }
+    14%, 28% {
+        opacity: 1;
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+    .content {
+        flex-direction: column; /* Stack sections vertically on tablets */
+        text-align: center;  /* Center content */
+    }
+
+    .left, .right {
+        flex: 1 100%; /* Make sections full-width */
+        padding: 15px;
+    }
+
+    .slider {
+        margin-left: 0;
+        max-width: none; /* Remove max-width and allow for full width */
+    }
+
+    .left p {
+        padding-left: 20px; /* Reduce padding */
+        font-size: medium; /* Adjust font size */
+    }
+}
+
+@media (max-width: 768px) {
+    .slider {
+        height: 250px; /* Reduce slider height for tablets */
+    }
+
+    .left p {
+        font-size: smaller; /* Reduce text size for smaller devices */
+    }
+
+    .content {
+        padding: 20px; /* Reduce padding */
+    }
+}
+
+@media (max-width: 480px) {
+    .slider {
+        height: 200px; /* Further reduce slider height on very small screens */
+    }
+
+    .left p {
+        font-size: smaller; /* Reduce text size further */
+    }
+
+    .content {
+        padding: 10px; /* Further reduce padding on small screens */
+    }
+}
+
+.content2 {
+    background-color: #121212;
+    color: #fefefe;
+    padding: 50px 20px;
+    margin-top: 100px;
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    flex-wrap: wrap; /* Allow content to wrap on smaller screens */
+}
+
+/* Left section (images) styles */
+.left2 {
+    flex: 1;
+    padding: 20px;
+    position: relative;
+    min-width: 480px; /* Prevent it from getting too small */
+}
+
+.slider2 {
+    position: relative;
+    width: 100%;
+    max-width: 480px; /* Fixed width to match the image size */
+    height: 360px;  /* Fixed height for the images */
+    margin-left: 150px;
+    overflow: hidden;
+}
+
+.slide2 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; /* Use full height of the container */
+    object-fit: cover;  /* Ensures the image covers the area, maintaining aspect ratio */
+    opacity: 0;  /* Initially hide all images */
+    transition: opacity 2s ease-in-out; /* Smooth fade transition */
+}
+
+/* Fade animation for each slide with a staggered delay */
+.slide2:nth-child(1) {
+    animation: fade 35s infinite;
+}
+
+.slide2:nth-child(2) {
+    animation: fade 35s infinite;
+    animation-delay: 5s;
+}
+
+.slide2:nth-child(3) {
+    animation: fade 35s infinite;
+    animation-delay: 10s;
+}
+
+.slide2:nth-child(4) {
+    animation: fade 35s infinite;
+    animation-delay: 15s;
+}
+
+.slide2:nth-child(5) {
+    animation: fade 35s infinite;
+    animation-delay: 20s;
+}
+
+.slide2:nth-child(6) {
+    animation: fade 35s infinite;
+    animation-delay: 25s;
+}
+
+.slide2:nth-child(7) {
+    animation: fade 35s infinite;
+    animation-delay: 30s;
+}
+
+/* Keyframe for fading effect */
+@keyframes fade {
+    0%, 100% {
+        opacity: 0;
+    }
+    14%, 28% {
+        opacity: 1;
+    }
+}
+
+/* Right section (text) styles */
+.right2 {
+    flex: 1;
+    padding: 70px;
+    text-align: left;
+    min-width: 300px; /* Prevents text from getting too small */
+}
+
+/* Make h2 aligned with p by applying margin-left */
+.right2 h2 {
+    margin-bottom: 20px;
+    margin-left: 230px; /* Align h2 to the left, same as the p tag */
+}
+
+/* Ensure paragraph has consistent left padding */
+.right2 p {
+    padding-left: 75px;
+    margin-top: 10px;
+    line-height: 1.6;   /* Optional: Adjusts line spacing for better readability */
+    font-size: larger;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+    .left2 {
+        padding: 15px;
+    }
+
+    .slider2 {
+        width: 100%;
+        margin-left: 0; /* Remove extra left margin on smaller screens */
+        max-width: none; /* Allow it to use full width on smaller screens */
+    }
+
+    .right2 {
+        padding: 50px;
+    }
+
+    .right2 h2 {
+        margin-left: 0; /* Remove left margin */
+    }
+
+    .right2 p {
+        padding-left: 20px; /* Reduce padding for mobile */
+    }
+}
+
+@media (max-width: 768px) {
+    .content2 {
+        flex-direction: column; /* Stack content vertically on small screens */
+        text-align: center;  /* Center text on small screens */
+    }
+
+    .left2,
+    .right2 {
+        flex: 1 100%; /* Make both sections full-width */
+        padding: 10px;
+    }
+
+    .slider2 {
+        width: 100%;
+        height: 250px; /* Reduce slider height for smaller screens */
+        margin-left: 0;
+    }
+
+    .right2 h2 {
+        margin-left: 0; /* Center the h2 */
+    }
+
+    .right2 p {
+        padding-left: 0; /* Remove left padding */
+        font-size: medium; /* Adjust font size for readability on small screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .slider2 {
+        height: 200px; /* Further reduce slider height on very small screens */
+    }
+
+    .right2 p {
+        font-size: smaller; /* Reduce text size */
+    }
 }
 
 .footer {
