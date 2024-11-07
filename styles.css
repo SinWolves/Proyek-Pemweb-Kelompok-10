@@ -125,8 +125,9 @@ body {
 
 .slider {
     position: relative;
-    width: 100%;
-    height: 300px; /* Adjust height as needed */
+    width: 400px;
+    height: 400px; /* Adjust height as needed */
+    margin-left: 125px;
     overflow: hidden;
 }
 
@@ -406,6 +407,81 @@ body {
     }
 }
 
+.caption h1{
+    margin-top: 150px;
+    font-size: 70px;
+    text-align: center;
+    color: #fefefe;
+}
+
+/* Centering the card */
+.card-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .card {
+    width: 300px;
+    padding: 20px;
+    border-radius: 8px;
+    border: 2px solid #fff; /* White border */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional shadow for better contrast */
+    text-align: center;
+  }
+  
+  .card h2 {
+    color: #fefefe;
+    font-size: 24px;
+    margin-bottom: 15px;
+  }
+  
+  .card p {
+    font-size: 16px;
+    color: #fefefe;
+    margin-bottom: 20px;
+  }
+  
+  .profile-img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+    object-fit: cover; /* Ensures the image is cropped and fits the circle */
+  }
+  
+  /* Styling for social media links */
+  .social-links a {
+    display: inline-block;
+    text-decoration: none;
+    margin: 0 10px;
+    font-size: 30px; /* Adjust icon size */
+    color: #333; /* Default icon color */
+    transition: color 0.3s ease, transform 0.3s ease; /* Smooth hover effect */
+  }
+  
+  .social-links a:hover {
+    color: #0077cc; /* GitHub hover color */
+    transform: scale(1.1); /* Slight zoom effect */
+  }
+  
+  .github {
+    color: #333; /* Default GitHub color */
+  }
+  
+  .instagram {
+    color: #e4405f; /* Default Instagram color */
+  }
+  
+  .social-links a:hover.github {
+    color: #007FFF; /* GitHub hover color */
+  }
+  
+  .social-links a:hover.instagram {
+    color: #e4405f; /* Instagram hover color */
+  }  
+  
 .footer {
     background-color: #0e1111;
     color: white;
