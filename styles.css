@@ -482,9 +482,41 @@ body {
     color: #e4405f; /* Instagram hover color */
   }  
   
+/* Basic footer styling */
 .footer {
-    background-color: #222;
-    color: white;
-    padding: 20px;
-    text-align: center;
+    background-color: #222; /* Dark background */
+    color: #fefefe;            /* White text */
+    text-align: center;     /* Center text */
+    padding: 20px;          /* Padding around the footer */
+    font-family: 'Arial', sans-serif; /* Clean font */
+    font-size: 14px;        /* Set a readable font size */
+    display: flex;          /* Use flexbox for layout */
+    justify-content: center; /* Center items horizontally */
+    gap: 20px;              /* Space between links */
+    position: fixed;        /* Fix it at the bottom */
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+/* Style for links */
+.footer a {
+    color: #fefefe;            /* White text */
+    text-decoration: none;  /* Remove underline */
+    font-weight: bold;      /* Make links bold */
+    transition: color 0.3s ease, transform 0.3s ease; /* Smooth hover effect */
+}
+
+/* Hover effect */
+.footer a:hover {
+    color: #f0a500;         /* Change color on hover */
+    transform: translateY(-2px); /* Lift the link slightly */
+}
+
+/* Responsive: Adjust for smaller screens */
+@media (max-width: 600px) {
+    .footer {
+        font-size: 12px; /* Smaller font size on mobile */
+        padding: 15px;   /* Reduce padding */
+    }
 }
