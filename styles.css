@@ -88,6 +88,23 @@ body {
     background-color: #b85514; /* Change color on hover for Sign Up button */
 }
 
+.hero .login-text {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #ffffff;
+    margin-top: 15px;
+    font-weight: 300;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.spotify-logo {
+    width: 24px; /* Adjust size of the logo */
+    height: 24px;
+}
+
 /* Main Content Section */
 .content {
     background-color: #121212;
