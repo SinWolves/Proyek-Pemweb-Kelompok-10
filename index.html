@@ -13,14 +13,15 @@
         <h1 class="display-1">Music Judger</h1>
         <p class="display-4">Where You Become the Judge for the Artist</p>
         <div class="button-container">
-            <a href="Main Page/index.html" class="button login">Login</a>
+            <a href="javascript:void(0);" class="button login" onclick="redirectToSpotifyLogin()" id='spotify-login'>Login</a>
             <a href="https://www.spotify.com/us/signup" class="button signup">Sign Up</a>
         </div>
         <p class="login-text">
-            <i class="fab fa-spotify spotify-icon"></i> <!-- Font Awesome Spotify Icon -->
+            <i class="fab fa-spotify spotify-icon"></i>
             Log in to our website using your Spotify account
         </p>
-    </header>    
+    </header>
+      
 
     <main class="content">
         <div class="left">
@@ -92,5 +93,19 @@
         <a href="Legality/Privacy.html">Privacy Policy</a>
     </footer>
 
+    <script type="module">
+        import { redirectToSpotifyLogin } from './Main Page/spotifyAPI.js';
+
+        document.getElementById('spotify-login').addEventListener('click', () => {
+            redirectToSpotifyLogin();
+        });
+
+        import { handleCallback } from './Main Page/spotifyAPI.js';
+      
+        // Run the handleCallback function when the page loads
+        window.onload = () => {
+          handleCallback();
+        };
+      </script>      
 </body>
 </html>
