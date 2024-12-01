@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <title>Songs Rating</title>
     <style>
         /* Page Background Color */
@@ -18,10 +19,110 @@
             flex-direction: column;
             overflow-y: auto; /* Allow scrolling if content overflows */
         }
+        /* Navbar styling */
+/* Navbar styling */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #333;
+    padding: 10px 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%; /* Ensure navbar spans the full width */
+    z-index: 3; /* Make sure navbar is above the overlay */
+}
+
+
+.menu-icon {
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.navbar-title {
+  color: white;
+  font-size: 24px; /* Increased text size */
+  text-align: center;
+  flex-grow: 1; /* Allows the title to take up available space */
+}
+
+.spacer {
+  width: 24px; /* Adjust as necessary */
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  backdrop-filter: blur(5px); /* Blur effect */
+  display: none; /* Hidden by default */
+  z-index: 2; /* Behind the navbar but in front of the content */
+}
+
+.sidebar {
+  position: fixed;
+  left: -250px; /* Start off-screen */
+  top: 0;
+  height: 100%;
+  width: 250px;
+  background-color: #444;
+  transition: left 0.3s ease; /* Smooth slide effect */
+  z-index: 3; /* Above the overlay */
+}
+
+.close-icon {
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 10px;
+  text-align: right; /* Align to the right */
+}
+
+.nav-links {
+  list-style: none;
+  margin: 0;
+  padding: 20px 0;
+}
+
+.nav-links li {
+  margin: 20px 0; /* Add vertical spacing */
+}
+
+/* Sidebar links - Make text black and remove underline */
+.nav-links a {
+  color: white;
+  text-decoration: none; /* Remove underline */
+  padding: 10px 20px;
+  display: block; /* Make the whole area clickable */
+  transition: background 0.3s;
+}
+
+/* Sidebar links hover effect */
+.nav-links a:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  text-decoration: none; /* Ensure no underline on hover */
+}
+
+/* To show sidebar */
+.show {
+  left: 0; /* Slide in */
+}
+
+.show-overlay {
+  display: block; /* Show overlay */
+}
+
 
         h1 {
             text-align: center;
             font-size: 2.5rem;
+            margin-top: 75px;
             margin-bottom: 20px;
             color: #333; /* Dark color for text */
             font-weight: bold;
@@ -82,6 +183,24 @@
     </style>
 </head>
 <body>
+    <nav class="navbar">
+        <div class="menu-icon" id="menu-icon">
+            <i class="fas fa-bars"></i>
+        </div>
+        <div class="navbar-title">Music Judger</div>
+        <div class="spacer"></div>
+      </nav>
+    <div class="overlay" id="overlay"></div>
+    <div class="sidebar" id="sidebar">
+        <div class="close-icon" id="close-icon">
+            <i class="fas fa-times"></i>
+        </div>
+        <ul class="nav-links">
+            <li><a href="playlist.html">Library</a></li>
+            <li><a href="genres.html">Genres</a></li>
+        </ul>
+    </div>
+
     <div>
         <h1>Songs Rating</h1>
         <table id="songsTable">
@@ -107,6 +226,31 @@
         const supabaseUrl = 'https://juwpousjwdokvuvfcpjm.supabase.co'; // Replace with your Supabase project URL
         const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imp1d3BvdXNqd2Rva3Z1dmZjcGptIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzI4NTI4MTgsImV4cCI6MjA0ODQyODgxOH0.WanY8jI1EizTRPbWpdqrxRmbVaGeoPIy7wBwDDFJLjo'; // Replace with your Supabase anon key
         const supabase = createClient(supabaseUrl, supabaseKey);
+
+        document.getElementById('menu-icon').addEventListener('click', function() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('overlay');
+            sidebar.classList.toggle('show'); // Toggle the 'show' class
+            overlay.classList.toggle('show-overlay'); // Toggle overlay
+        });
+
+        document.getElementById('close-icon').addEventListener('click', function() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('overlay');
+            sidebar.classList.remove('show'); // Remove the 'show' class
+            overlay.classList.remove('show-overlay'); // Hide overlay
+        });
+
+        // Close sidebar when clicking outside
+        document.addEventListener('click', function(event) {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('overlay');
+            const menuIcon = document.getElementById('menu-icon');
+            if (sidebar.classList.contains('show') && !sidebar.contains(event.target) && !menuIcon.contains(event.target)) {
+                sidebar.classList.remove('show');
+                overlay.classList.remove('show-overlay'); // Hide overlay
+            }
+        });
 
         // Function to fetch songs and ratings from Supabase
         async function getSongs() {
