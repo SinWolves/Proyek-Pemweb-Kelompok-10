@@ -1,0 +1,1016 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Music Judger</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+     <style>
+        *{
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #333;
+  padding: 10px 20px;
+  position: relative;
+  z-index: 3; /* Make sure navbar is above the overlay */
+}
+
+.menu-icon {
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.navbar-title {
+  color: white;
+  font-size: 20px;
+  text-align: center;
+  flex-grow: 1; /* Allows the title to take up available space */
+}
+
+.spacer {
+  width: 24px; /* Adjust as necessary */
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  backdrop-filter: blur(5px); /* Blur effect */
+  display: none; /* Hidden by default */
+  z-index: 2; /* Behind the navbar but in front of the content */
+}
+
+.sidebar {
+  position: fixed;
+  left: -250px; /* Start off-screen */
+  top: 0;
+  height: 100%;
+  width: 250px;
+  background-color: #444;
+  transition: left 0.3s ease; /* Smooth slide effect */
+  z-index: 3; /* Above the overlay */
+}
+
+.close-icon {
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 10px;
+  text-align: right; /* Align to the right */
+}
+
+.nav-links {
+  list-style: none;
+  margin: 0;
+  padding: 20px 0;
+}
+
+.nav-links li {
+  margin: 20px 0; /* Add vertical spacing */
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  padding: 10px 20px;
+  display: block; /* Make the whole area clickable */
+  transition: background 0.3s;
+}
+
+.nav-links a:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+}
+
+.show {
+  left: 0; /* Slide in */
+}
+
+.show-overlay {
+  display: block; /* Show overlay */
+}
+
+body{
+  background-color: #fef1e4 !important;
+}
+
+#songsTitle{
+  border-radius: 10px;
+  margin-top: 25px;
+  margin-bottom: 50px;
+  margin-left: 15px;
+}
+
+.music-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  }
+  
+.music-item {
+  display: flex;
+  align-items: center;
+  background-color: #fffafa;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.music-item:hover{
+  background-color: #ccc;
+  cursor: pointer;
+}
+  
+.music-item img {
+  width: 100px;
+  height: 100px;
+  margin-right: 10px
+}
+
+.music-info h3{
+  white-space: nowrap; 
+  width: 300px; 
+  overflow: hidden;
+  text-overflow: ellipsis; 
+}
+
+#albumsTitle{
+  margin-top: 25px;
+  margin-bottom: 50px;
+  margin-left: 15px;
+}
+
+#albumsCover {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.album {
+  width: 150px;
+  margin-bottom: 20px;
+}
+
+.album:hover{
+  background-color: #ccc;
+  cursor: pointer;
+}
+
+.album img {
+  width: 100%;
+  height: auto;
+}
+
+.album-info {
+  text-align: center;
+}
+
+.album-info h2 {
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.album-info p {
+  font-size: 12px;
+  color: #777;
+}
+
+#artistTitle{
+  margin-top: 25px;
+  margin-bottom: 50px;
+  margin-left: 15px;
+}
+
+#artistCover {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.artist {
+  width: 150px;
+  margin-bottom: 20px;
+}
+
+.artist:hover{
+  background-color: #ccc;
+  cursor: pointer;
+}
+
+.artist img {
+  vertical-align: middle;
+  border-radius: 100%;
+  width: 100%;
+  height: 100%;
+}
+
+.artist-info {
+  margin-top: 25px;
+  text-align: center;
+}
+
+.artist-info h2 {
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+/* Style the popup container */
+#songsPopup {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.4);
+}
+
+#albumsPopup {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.4);
+}
+
+
+#artistsPopup {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.4);
+}
+
+/* Style the popup card */
+#popup-card {
+  display: flex;
+  position: absolute;
+  margin: au;
+  top: 50%;
+  left: 50%;
+  width: 60%; /* Increase width */
+  height: auto; /* Auto height or set a specific height */
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 100px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.left, .right {
+  padding: 20px;
+  flex: 1; /* Equal width for both sections */
+}
+
+.left{
+  justify-content: center;
+}
+
+.left img{
+  width: 300px;
+  height: 300px;
+}
+
+.star {
+  font-size: 30px;
+  cursor: pointer;
+  color: gray;
+}
+.selected {
+  color: gold;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.close2 {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close2:hover,
+.close2:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.close3 {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close3:hover,
+.close3:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+     </style>
+  </head>
+  <body>
+
+    <!--Navbar-->
+
+    <nav class="navbar">
+      <div class="menu-icon" id="menu-icon">
+          <i class="fas fa-bars"></i>
+      </div>
+      <div class="navbar-title">Music Judger</div>
+      <div class="spacer"></div>
+    </nav>
+  <div class="overlay" id="overlay"></div>
+  <div class="sidebar" id="sidebar">
+      <div class="close-icon" id="close-icon">
+          <i class="fas fa-times"></i>
+      </div>
+      <ul class="nav-links">
+          <li><a href="../playlist.html">Library</a></li>
+          <li><a href="../genres.html">Genres</a></li>
+      </ul>
+  </div>
+    
+    <!--Title Song-->
+
+    <div class="container-fluid">
+      <H1 id="songsTitle">Songs</H1>
+    </div>
+
+    <!--Songs Grid-->
+
+    <div class="music-grid">
+      <div class="music-item" id="songs1">
+        <img src="../Artists/Bruno Mars/Album/24K Magic/bruno_mars_24k_magic-portada.jpg" alt="Album Cover">
+        <div class="music-info">
+          <h3 class="title">Versace on the Floor</h3>
+          <p class="artist">Bruno Mars</p>
+        </div>
+      </div>
+      <div class="music-item" id="songs2">
+        <img src="../Artists/The Weeknd/The_Weeknd_-_After_Hours.png" alt="Album Cover">
+        <div class="music-info">
+            <h3 class="title">Blinding Light</h3>
+            <p class="artist">The Weeknd</p>
+        </div>
+      </div>
+      <div class="music-item" id="songs3">
+        <img src="../Artists/Khalid/Khalid_-_American_Teen.png" alt="Album Cover">
+        <div class="music-info">
+          <h3 class="title">8TEEN</h3>
+          <p class="artist">Khalid</p>
+        </div>
+      </div>
+      <div class="music-item" id="songs4">
+        <img src="../Artists/Frank Ocean/Album/channel ORANGE/-achannelorange.jpg" alt="Album Cover">
+        <div class="music-info">
+          <h3 class="title">Thinkin Bout You</h3>
+          <p class="artist">Frank Ocean</p>
+        </div>
+      </div>
+      <div class="music-item" id="songs5">
+        <img src="../Artists/The Weeknd/The_Weeknd_-_After_Hours.png" alt="Album Cover">
+        <div class="music-info">
+          <h3 class="title">Save Your Tears</h3>
+          <p class="artist">The Weeknd</p>
+        </div>
+      </div>
+      <div class="music-item" id="songs6">
+        <img src="../Artists/Bruno Mars/Album/24K Magic/bruno_mars_24k_magic-portada.jpg" alt="Album Cover">
+        <div class="music-info">
+          <h3 class="title">That's What I Like</h3>
+          <p class="artist">Bruno Mars</p>
+        </div>
+      </div>
+      <div class="music-item" id="songs7">
+        <img src="../Artists/SZA/SZA_-_S.O.S.png" alt="Album Cover">
+        <div class="music-info">
+          <h3 class="title">Kill Bill</h3>
+          <p class="artist">SZA</p>
+        </div>
+      </div>
+      <div class="music-item" id="songs8">
+        <img src="../Artists/Frank Ocean/Album/Blonde/Blonde_-_Frank_Ocean.jpeg" alt="Album Cover">
+        <div class="music-info">
+          <h3 class="title">White Ferrari</h3>
+          <p class="artist">Frank Ocean</p>
+        </div>
+      </div>
+      <div class="music-item" id="songs9">
+        <img src="../Artists/SZA/SZA_-_S.O.S.png" alt="Album Cover">
+        <div class="music-info">
+          <h3 class="title">Snooze</h3>
+          <p class="artist">SZA</p>
+        </div>
+      </div>
+      <div class="music-item" id="songs10">
+        <img src="../Artists/Khalid/Khalid_-_American_Teen.png" alt="Album Cover">
+        <div class="music-info">
+          <h3 class="title">Location</h3>
+          <p class="artist">Khalid</p>
+        </div>
+      </div>
+      <div class="music-item" id="songs11">
+        <img src="../Artists/Bruno Mars/Album/24K Magic/bruno_mars_24k_magic-portada.jpg" alt="Album Cover">
+        <div class="music-info">
+          <h3 class="title">Finesse</h3>
+          <p class="artist">Bruno Mars</p>
+        </div>
+      </div>
+      <div class="music-item" id="songs12">
+        <img src="../Artists/Frank Ocean/Album/Blonde/Blonde_-_Frank_Ocean.jpeg" alt="Album Cover">
+        <div class="music-info">
+          <h3 class="title">Pink+White</h3>
+          <p class="artist">Frank Ocean</p>
+        </div>
+      </div>
+    </div>
+
+    <!--Title Album-->
+    <div class="container-fluid">
+      <h1 id="albumsTitle">Albums</h1>
+    </div>
+
+    <!--Album-->
+      
+    <div class="container-fluid" id="albumsCover">
+      <div class="album" id="albums1">
+        <img src="../Artists/Frank Ocean/Album/channel ORANGE/-achannelorange.jpg" alt="SMITHEREENS Album Cover">
+        <div class="album-info">
+          <h2 class="label">channel ORANGE</h2>
+          <p class="record">Album • Frank Ocean</p>
+        </div>
+      </div>
+      <div class="album" id="albums2">
+        <img src="../Artists/SZA/SZA_-_S.O.S.png" alt="channel ORANGE Album Cover">
+        <div class="album-info">
+          <h2 class="label">SOS</h2>
+          <p class="record">Album • SZA</p>
+        </div>
+      </div>
+      <div class="album" id="albums3">
+        <img src="../Artists/Khalid/Khalid_-_American_Teen.png" alt="Wolf Album Cover">
+        <div class="album-info">
+          <h2 class="label">Birds in the Trap Sing McKnight</h2>
+          <p class="record">Album • Khalid</p>
+        </div>
+      </div>
+      <div class="album" id="albums4">
+        <img src="../Artists/The Weeknd/The_Weeknd_-_After_Hours.png" alt="24K Magic Album Cover">
+        <div class="album-info">
+          <h2 class="label">After Hour</h2>
+          <p class="record">Album • The Weeknd</p>
+        </div>
+      </div>
+      <div class="album" id="albums5">
+        <img src="../Artists/Frank Ocean/Album/Blonde/Blonde_-_Frank_Ocean.jpeg" alt="UTOPIA Cover">
+        <div class="album-info">
+          <h2 class="label">Blonde</h2>
+          <p class="record">Album • Frank Ocean</p>
+        </div>
+      </div>
+      <div class="album" id="albums6">
+        <img src="../Artists/Bruno Mars/Album/24K Magic/bruno_mars_24k_magic-portada.jpg" alt="IGOR Cover">
+        <div class="album-info">
+          <h2 class="label">24K Magic</h2>
+          <p class="record">Album • Bruno Mars</p>
+        </div>
+      </div>
+    </div>
+
+    <!--Artist Title-->
+    <div class="container-fluid">
+      <h1 id="artistTitle">Artists</h1>
+    </div>
+
+    <!--Artist-->
+
+    <div class="container-fluid" id="artistCover">
+      <div class="artist" id="artists1">
+        <img src="../Artists/SZA/zyro-image.png-2.jpg" alt="Eminem Photo">
+        <div class="artist-info">
+          <h2 class="name">SZA</h2>
+        </div>
+      </div>
+      <div class="artist" id="artists2">
+        <img src="../Artists/Bruno Mars/bruno-mars-1_169.png" alt="Frank Ocean Photo">
+        <div class="artist-info">
+          <h2 class="name">Bruno Mars</h2>
+        </div>
+      </div>
+      <div class="artist" id="artists3">
+        <img src="../Artists/The Weeknd/Weeknd_d4fb08e62a924691a18af068d9bfa972.jpg" alt="Snoop Dogg Photo">
+        <div class="artist-info">
+          <h2 class="name">The Weeknd</h2>
+        </div>
+      </div>
+      <div class="artist" id="artists4">
+        <img src="../Artists/Frank Ocean/black-and-white-frank-ocean-wbdua3rbonhm6c8d.jpg" alt="Bruno Mars Photo">
+        <div class="artist-info">
+          <h2 class="name">Frank Ocean</h2>
+        </div>
+      </div>
+      <div class="artist" id="artists5">
+        <img src="../Artists/Khalid/Khalid_Shot_01-edit.webp" alt="Billie Eilish Photo">
+        <div class="artist-info">
+          <h2 class="name">Khalid</h2>
+        </div>
+      </div>
+      <div class="artist" id="artists6">
+        <img src="../Artists/Anderson .Paak/MI0004505410-MN0003274605.jpg" alt="Tyler, the Creator Photo">
+        <div class="artist-info">
+          <h2 class="name">Anderson .Paak</h2>
+        </div>
+      </div>
+    </div>
+
+    <!--Pop-up Songs Rating-->
+
+    <div id="songsPopup" style="display: none;">
+      <div id="popup-card">
+          <div class="left">
+              <img id="popup-cover" src="" alt="Album Cover">
+              <h2 id="popup-title"></h2>
+              <p id="popup-artist"></p>
+          </div>
+          <div class="right">
+              <span class="close">&times;</span>
+              <h1>Rate the Song</h1>
+              <div id="song-star-rating">
+                  <span class="star" data-value="1">&#9733;</span>
+                  <span class="star" data-value="2">&#9733;</span>
+                  <span class="star" data-value="3">&#9733;</span>
+                  <span class="star" data-value="4">&#9733;</span>
+                  <span class="star" data-value="5">&#9733;</span>
+              </div>
+              <button id="song-submit">Submit Rating</button>
+          </div>
+      </div>
+    </div>
+
+    <!--Pop-up Albums Rating-->
+
+    <div id="albumsPopup" style="display: none;">
+      <div id="popup-card">
+          <div class="left">
+              <img id="popup-overlay" src="" alt="Album Cover">
+              <h2 id="popup-label"></h2>
+              <p id="popup-record"></p>
+          </div>
+          <div class="right">
+              <span class="close2">&times;</span>
+              <h1>Rate the Album</h1>
+              <div id="album-star-rating">
+                  <span class="star" data-value="1">&#9733;</span>
+                  <span class="star" data-value="2">&#9733;</span>
+                  <span class="star" data-value="3">&#9733;</span>
+                  <span class="star" data-value="4">&#9733;</span>
+                  <span class="star" data-value="5">&#9733;</span>
+              </div>
+              <button id="album-submit">Submit Rating</button>
+          </div>
+      </div>
+    </div>
+
+    <!-- Pop-Up Artists Rating-->
+
+    <div id="artistsPopup" style="display: none;">
+      <div id="popup-card">
+          <div class="left">
+              <img id="popup-photo" src="" alt="Artist Photo">
+              <h2 id="popup-name"></h2>
+          </div>
+          <div class="right">
+              <span class="close3">&times;</span>
+              <h1>Rate the Artist</h1>
+              <div id="artist-star-rating">
+                  <span class="star" data-value="1">&#9733;</span>
+                  <span class="star" data-value="2">&#9733;</span>
+                  <span class="star" data-value="3">&#9733;</span>
+                  <span class="star" data-value="4">&#9733;</span>
+                  <span class="star" data-value="5">&#9733;</span>
+              </div>
+              <button id="artist-submit">Submit Rating</button>
+          </div>
+      </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script type="module">
+        import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'
+        const supabase = createClient('https://juwpousjwdokvuvfcpjm.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imp1d3BvdXNqd2Rva3Z1dmZjcGptIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzI4NTI4MTgsImV4cCI6MjA0ODQyODgxOH0.WanY8jI1EizTRPbWpdqrxRmbVaGeoPIy7wBwDDFJLjo')
+      
+        console.log('Supabase Instance: ', supabase)
+
+        const songsItems = document.querySelectorAll('.music-item');
+        const songStarRating = document.getElementById('song-star-rating');
+        const songSubmitButton = document.getElementById('song-submit');
+        const albumStarRating = document.getElementById('album-star-rating');
+        const albumSubmitButton = document.getElementById('album-submit');
+        const albums = document.querySelectorAll('.album');
+        const popup = document.getElementById('albumsPopup');
+        const popupOverlay = document.getElementById('popup-overlay');
+        const popupLabel = document.getElementById('popup-label');
+        const popupRecord = document.getElementById('popup-record');
+        const closeButton = document.querySelector('.close2');
+        const starRating = document.getElementById('star-rating');
+        const submitButton = document.getElementById('submit');
+        const stars = document.querySelectorAll('.star');
+        const artists = document.querySelectorAll('.artist');
+        const artistStarRating = document.getElementById('artist-star-rating');
+        const artistSubmitButton = document.getElementById('artist-submit');
+        const artistsPopup = document.getElementById('artistsPopup');
+        const popupPhoto = document.getElementById('popup-photo');
+        const popupName = document.getElementById('popup-name');
+        const closedButton = document.querySelector('.close3');
+        const songsRatings = [];
+        const albumsRatings = [];
+        const artistsRatings = [];
+
+        document.getElementById('menu-icon').addEventListener('click', function() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('overlay');
+            sidebar.classList.toggle('show'); // Toggle the 'show' class
+            overlay.classList.toggle('show-overlay'); // Toggle overlay
+        });
+
+        document.getElementById('close-icon').addEventListener('click', function() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('overlay');
+            sidebar.classList.remove('show'); // Remove the 'show' class
+            overlay.classList.remove('show-overlay'); // Hide overlay
+        });
+
+        // Close sidebar when clicking outside
+        document.addEventListener('click', function(event) {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('overlay');
+            const menuIcon = document.getElementById('menu-icon');
+            if (sidebar.classList.contains('show') && !sidebar.contains(event.target) && !menuIcon.contains(event.target)) {
+                sidebar.classList.remove('show');
+                overlay.classList.remove('show-overlay'); // Hide overlay
+            }
+        });
+
+
+        let currentRating = 0;  // Track the current rating for the selected song
+        let currentSong = null; // Track the current song being rated
+
+        songsItems.forEach(item => {
+            item.addEventListener("click", () => {
+                // Get song details
+                const title = item.querySelector('.title').textContent;
+                const artist = item.querySelector('.artist').textContent;
+                const cover = item.querySelector('img').src;
+
+                // Populate the popup with current song data
+                document.getElementById('popup-title').textContent = title;
+                document.getElementById('popup-artist').textContent = artist;
+                document.getElementById('popup-cover').src = cover;
+
+                // Show the popup
+                document.getElementById('songsPopup').style.display = 'block';
+
+                // Reset rating state when a new song is clicked
+                currentRating = 0;  // Reset rating
+                const stars = document.querySelectorAll('#song-star-rating .star'); // Updated ID
+
+                // Reset previous song's selected stars if needed
+                if (currentSong && currentSong !== item) {
+                    resetStars();  // Reset the stars of the previous song
+                }
+
+                // Set the current song
+                currentSong = item;
+
+                // Reset the stars visually when a new song is selected
+                resetStars(); // Ensures stars are cleared when switching songs
+
+                const closePopup = document.querySelector('.close');
+                closePopup.onclick = () => {
+                    document.getElementById('songsPopup').style.display = 'none';
+                };
+
+                stars.forEach(star => {
+                    // Hover effect to show selected stars
+                    star.addEventListener('mouseover', () => {
+                        resetStars(); // Reset stars on hover
+                        star.classList.add('selected');
+                        star.previousElementSibling?.classList.add('selected');
+                    });
+
+                    // Remove hover effect when mouse leaves
+                    star.addEventListener('mouseout', resetStars);
+
+                    // Handle star click event
+                    star.addEventListener('click', () => {
+                        currentRating = parseInt(star.getAttribute('data-value')); // Update the rating
+                        resetStars(); // Update the stars after click
+                    });
+                });
+
+                // Function to reset star ratings visually
+                function resetStars() {
+                    stars.forEach(star => star.classList.remove('selected')); // Clear all stars
+                    for (let i = 0; i < currentRating; i++) {
+                        stars[i].classList.add('selected'); // Add 'selected' to the current rating stars
+                    }
+                }
+
+                // Handle the submit button click to save the rating
+                document.getElementById('song-submit').onclick = () => {
+                    if (currentRating > 0) {
+                        saveRating(currentRating, title, artist); // Save rating to Supabase
+                    } else {
+                        alert('Please select a rating before submitting.');
+                    }
+                };
+            });
+        });
+
+        // Save the rating to Supabase when submitted
+        async function saveRating(rating, title, artist) {
+            try {
+                const { data, error } = await supabase
+                    .from('songsRating') // Replace with your table name
+                    .insert([
+                        {
+                            songs_name: title,
+                            songs_artist: artist,
+                            songs_genre: 'R&B',  // Example genre, change as needed
+                            songs_rating: rating,
+                        }
+                    ]);
+
+                if (error) {
+                    console.error('Error inserting data:', error);
+                    alert('Error saving rating!');
+                } else {
+                    console.log('Song data saved:', data);
+                    alert(`You gave ${rating} stars for '${title}'!`);
+                }
+            } catch (err) {
+                console.error('Unexpected error:', err);
+                alert('An unexpected error occurred while saving the rating.');
+            }
+        }
+
+            // Open the popup when an album is clicked
+            albums.forEach((album, index) => {
+                album.addEventListener('click', (event) => {
+                    const img = album.querySelector('img').src;
+                    const label = album.querySelector('.label').textContent;
+                    const record = album.querySelector('.record').textContent;
+
+                    popupOverlay.src = img;
+                    popupLabel.textContent = label;
+                    popupRecord.textContent = record;
+
+                    popup.style.display = 'block';
+                    resetStarRating();
+                    albumStarRating.setAttribute('data-album-index', index);
+                });
+            });
+
+            // Close the popup
+            closeButton.addEventListener('click', () => {
+                popup.style.display = 'none';
+            });
+
+            // Handle star rating click
+            albumStarRating.addEventListener('click', (e) => {
+                if (e.target.classList.contains('star')) {
+                    const ratingValue = e.target.getAttribute('data-value');
+                    const stars = albumStarRating.querySelectorAll('.star');
+
+                    stars.forEach(star => {
+                        star.classList.remove('selected');
+                        if (star.getAttribute('data-value') <= ratingValue) {
+                            star.classList.add('selected');
+                        }
+                    });
+
+                    albumStarRating.setAttribute('data-rating', ratingValue);
+                }
+            });
+
+            // Submit the album rating
+            albumSubmitButton.addEventListener('click', async () => {
+                const albumIndex = albumStarRating.getAttribute('data-album-index');
+                const rating = albumStarRating.getAttribute('data-rating');
+                const albumName = popupLabel.textContent; // Get album name
+                const artistName = popupRecord.textContent; // Get artist name
+
+                if (rating) {
+                    // Store the album rating
+                    albumsRatings[albumIndex] = rating;
+                    console.log('Album Ratings:', albumsRatings);
+                    alert(`You gave ${rating} stars for '${albumName}' by ${artistName}!`);
+
+                    try {
+                        // Ensure rating is an integer
+                        const parsedRating = parseInt(rating, 10);
+
+                        // Check the data being passed to Supabase
+                        console.log('Inserting the following data to Supabase:', {
+                            album_title: albumName,
+                            artist_name: artistName,
+                            rating: parsedRating
+                        });
+
+                        // Insert the data into Supabase
+                        const { data, error } = await supabase
+                            .from('albumsRating') // Replace with your table name
+                            .insert([
+                                {
+                                    albums_name: albumName,
+                                    albums_artists: artistName,
+                                    albums_genre: 'R&B', // Adjust genre if needed
+                                    albums_rating: parsedRating,
+                                }
+                            ]);
+
+                        if (error) {
+                            console.error('Error inserting rating:', error);
+                            alert(`Error submitting rating: ${error.message || 'Unknown error'}`);
+                        } else {
+                            console.log('Data inserted successfully:', data);
+                            alert('Your rating has been submitted!');
+                        }
+
+                    } catch (err) {
+                        console.error('Unexpected error:', err);  // Catch unexpected errors
+                        alert('There was an unexpected error submitting your rating.');
+                    }
+
+                    popup.style.display = 'none';
+                }
+            });
+
+            // Function to reset star ratings
+            function resetStarRating() {
+                const stars = albumStarRating.querySelectorAll('.star');
+                stars.forEach(star => {
+                    star.classList.remove('selected');
+                });
+                albumStarRating.removeAttribute('data-rating');
+            }
+
+            // Prevent event propagation when clicking on the star rating or submit button
+            albumStarRating.addEventListener('click', (e) => {
+                e.stopPropagation();
+            });
+
+            albumSubmitButton.addEventListener('click', (e) => {
+                e.stopPropagation();
+            });
+
+
+        
+            artists.forEach((artist, index) => {
+    artist.addEventListener('click', (event) => {
+        const img = artist.querySelector('img').src;
+        const name = artist.querySelector('.name').textContent;
+
+        popupPhoto.src = img;
+        popupName.textContent = name;
+
+        artistsPopup.style.display = 'block';
+        resetStarRating3();
+        artistStarRating.setAttribute('data-artist-index', index);
+    });
+});
+
+// Close the popup
+closedButton.addEventListener('click', () => {
+    artistsPopup.style.display = 'none';
+});
+
+// Handle star rating click
+artistStarRating.addEventListener('click', (e) => {
+    if (e.target.classList.contains('star')) {
+        const ratingValue = e.target.getAttribute('data-value');
+        const stars = artistStarRating.querySelectorAll('.star');
+
+        stars.forEach(star => {
+            star.classList.remove('selected');
+            if (star.getAttribute('data-value') <= ratingValue) {
+                star.classList.add('selected');
+            }
+        });
+
+        artistStarRating.setAttribute('data-rating', ratingValue);
+    }
+});
+
+// Submit the artist rating
+// Submit the artist rating and store it in Supabase
+artistSubmitButton.addEventListener('click', async () => {
+    const artistIndex = artistStarRating.getAttribute('data-artist-index');
+    const rating = artistStarRating.getAttribute('data-rating');
+    const artistName = popupName.textContent; // Get artist name
+
+    if (rating) {
+        artistsRatings[artistIndex] = rating;
+        console.log('Artist Ratings:', artistsRatings);
+        alert(`You gave ${rating} stars for '${artistName}'!`); // Alert with user's rating
+        
+        // Insert rating into Supabase table
+        try {
+            const { data, error } = await supabase
+                .from('artistsRating') // Name of your Supabase table
+                .insert([
+                    { artists_name: artistName, artists_genre: 'R&B', artists_rating: parseInt(rating) }
+                ]);
+            
+            if (error) {
+                console.error('Error inserting rating:', error);
+                alert('Something went wrong while submitting your rating.');
+            } else {
+                console.log('Rating submitted successfully:', data);
+            }
+        } catch (error) {
+            console.error('Error submitting rating:', error);
+            alert('Error while submitting rating.');
+        }
+    }
+
+    // Close the popup
+    artistsPopup.style.display = 'none';
+});
+
+// Function to reset star ratings
+function resetStarRating3() {
+    const stars = artistStarRating.querySelectorAll('.star');
+    stars.forEach(star => {
+        star.classList.remove('selected');
+    });
+    artistStarRating.removeAttribute('data-rating');
+}
+
+// Prevent event propagation when clicking on the star rating or submit button
+artistStarRating.addEventListener('click', (e) => {
+    e.stopPropagation();
+});
+
+artistSubmitButton.addEventListener('click', (e) => {
+    e.stopPropagation();
+});
+
+
+
+      </script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>

@@ -9,7 +9,7 @@
   background-color: #333;
   padding: 10px 20px;
   position: relative;
-  z-index: 2; /* Make sure navbar is above the overlay */
+  z-index: 3; /* Make sure navbar is above the overlay */
 }
 
 .menu-icon {
@@ -38,7 +38,7 @@
   background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
   backdrop-filter: blur(5px); /* Blur effect */
   display: none; /* Hidden by default */
-  z-index: 1; /* Behind the navbar but in front of the content */
+  z-index: 2; /* Behind the navbar but in front of the content */
 }
 
 .sidebar {
@@ -49,7 +49,7 @@
   width: 250px;
   background-color: #444;
   transition: left 0.3s ease; /* Smooth slide effect */
-  z-index: 2; /* Above the overlay */
+  z-index: 3; /* Above the overlay */
 }
 
 .close-icon {

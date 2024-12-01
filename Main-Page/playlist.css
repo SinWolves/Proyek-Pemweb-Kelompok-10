@@ -1,0 +1,166 @@
+/* styles.css */
+body {
+    background-color: #fef1e4;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+  
+  .navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #333;
+    padding: 10px 20px;
+    position: relative;
+    z-index: 3; /* Make sure navbar is above the overlay */
+  }
+  
+  .menu-icon {
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+  }
+  
+  .navbar-title {
+    color: white;
+    font-size: 20px;
+    text-align: center;
+    flex-grow: 1; /* Allows the title to take up available space */
+  }
+  
+  .spacer {
+    width: 24px; /* Adjust as necessary */
+  }
+  
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    backdrop-filter: blur(5px); /* Blur effect */
+    display: none; /* Hidden by default */
+    z-index: 2; /* Behind the navbar but in front of the content */
+  }
+  
+  .sidebar {
+    position: fixed;
+    left: -250px; /* Start off-screen */
+    top: 0;
+    height: 100%;
+    width: 250px;
+    background-color: #444;
+    transition: left 0.3s ease; /* Smooth slide effect */
+    z-index: 3; /* Above the overlay */
+  }
+  
+  .close-icon {
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 10px;
+    text-align: right; /* Align to the right */
+  }
+  
+  .nav-links {
+    list-style: none;
+    margin: 0;
+    padding: 20px 0;
+  }
+  
+  .nav-links li {
+    margin: 20px 0; /* Add vertical spacing */
+  }
+  
+  .nav-links a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    display: block; /* Make the whole area clickable */
+    transition: background 0.3s;
+  }
+  
+  .nav-links a:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+  }
+  
+  .show {
+    left: 0; /* Slide in */
+  }
+  
+  .show-overlay {
+    display: block; /* Show overlay */
+  }
+  
+
+.container-fluid {
+  text-align: center;
+}
+
+.playlist-card {
+  display: flex;
+  align-items: center;
+  background-color: #fef1e4;
+  padding: 15px;
+  border-radius: 10px;
+  cursor: pointer;
+  width: 300px;
+  margin: 0 auto;
+  transition: transform 0.3s ease;
+}
+
+.playlist-card:hover {
+  transform: scale(1.05);
+}
+
+.playlist-image img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-right: 15px;
+}
+
+.playlist-info h2 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.table-container {
+  margin-top: 20px;
+  text-align: center;
+}
+
+table {
+  width: 80%;
+  margin: 0 auto;
+  border-collapse: collapse;
+  background-color: #181818;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+table th,
+table td {
+  padding: 10px 15px;
+  text-align: left;
+  border-bottom: 1px solid #282828;
+}
+
+table th {
+  background-color: #282828;
+  color: #fff;
+}
+
+table td {
+  color: #b3b3b3;
+}
+
+table tr:hover {
+  background-color: #343434;
+}

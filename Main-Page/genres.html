@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Music Genres</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fef1e4;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    header {
+      text-align: center;
+      padding: 20px;
+    }
+
+    header h1 {
+      font-size: 2rem;
+      color: #333;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      color: #666;
+    }
+
+    .genres {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .genre {
+      padding: 10px 20px;
+      background-color: #ffdab9;
+      color: #333;
+      border-radius: 20px;
+      font-size: 1rem;
+      font-weight: bold;
+      text-decoration: none;
+      text-align: center;
+      cursor: pointer;
+      transition: transform 0.2s, background-color 0.2s;
+    }
+
+    .genre:hover {
+      transform: scale(1.1);
+      background-color: #ffc4a3;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Genres</h1>
+    <p>Select the genre of the song you like</p>
+  </header>
+  <div class="genres">
+    <a href="genre_music/pop.html" class="genre">Pop</a>
+    <a href="genre_music/hiphop.html" class="genre">Hip-Hop</a>
+    <a href="genre_music/rnb.html" class="genre">R&B</a>
+    <a href="genre_music/alternative.html" class="genre">Alternative</a>
+  </div>
+</body>
+</html>

@@ -108,7 +108,6 @@ songsItems.forEach(item => {
         };
     });
 });
-//***************************************************************************************************************************************************************************************** */
 
 // Open the popup when an album is clicked
 albums.forEach((album, index) => {
@@ -182,8 +181,6 @@ albumSubmitButton.addEventListener('click', (e) => {
     e.stopPropagation();
 });
 
-//************************************************************************************************************************************************************************** */
-
 
 artists.forEach((artist, index) => {
     artist.addEventListener('click', (event) => {
@@ -194,7 +191,7 @@ artists.forEach((artist, index) => {
         popupName.textContent = name;
 
         artistsPopup.style.display = 'block';
-        resetStarRating();
+        resetStarRating3();
         artistStarRating.setAttribute('data-artist-index', index);
     });
 });
@@ -237,7 +234,7 @@ artistSubmitButton.addEventListener('click', () => {
 });
 
 // Function to reset star ratings
-function resetStarRating() {
+function resetStarRating3() {
     const stars = artistStarRating.querySelectorAll('.star');
     stars.forEach(star => {
         star.classList.remove('selected');
